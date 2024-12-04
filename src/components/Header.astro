@@ -1,40 +1,108 @@
----
----
-
 <section class="">
-    <div>
-        <nav class="fixed top-0 left-0 right-0 bg-zinc-900 p-4">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
-              <div>
-                <a href="/" class="text-white text-2xl font-bold">
-                  cads
-                </a>
-              </div>
-        
-              <div class="flex items-center space-x-1">
-                <div class="bg-zinc-800 rounded-full px-4 py-2 flex space-x-4">
-                  <a href="/" class="text-white hover:text-gray-300">
-                    Home
-                  </a>
-                  <a href="/" class="text-white hover:text-gray-300">
-                    About me
-                  </a>
-                  <a href="/" class="text-white hover:text-gray-300">
-                    Contact
-                  </a>
-                </div>
-              </div>
-        
-              {/* Right side buttons */}
-              <div class="flex items-center space-x-4">
-                <button class="text-white hover:text-gray-300">
-                  ES
-                </button>
-                <button class="text-white hover:text-gray-300">
-                  Light
-                </button>
-              </div>
-            </div>
-          </nav>
-    </div>
+  <header>
+    <nav
+      role="navigation"
+      class="fixed top-0 left-0 right-0 bg-zinc-950 p-4 z-50 shadow-lg shadow-stone-900"
+    >
+      <div class="max-w-7xl mx-auto h-12 flex justify-between items-center">
+        <div>
+          <a href="/" class="text-white text-2xl font-bold" aria-label="Home"> cads </a>
+        </div>
+       
+        <div
+          class="hidden rounded-full px-4 py-2 md:flex space-x-9 items-center"
+        >
+          <a href="#home" class="text-white hover:text-gray-300 transition-colors"> Home </a>
+          <a href="#about" class="text-white hover:text-gray-300 transition-colors"> About me </a>
+          <a href="#contact" class="text-white hover:text-gray-300 transition-colors"> Contact </a>
+        </div>
+       
+        <div class="hidden md:flex items-center space-x-4">
+          <button
+            class="text-white hover:text-gray-300 transition-colors"
+            aria-label="Change language"
+          >
+            ES
+          </button>
+          <button
+            class="text-white hover:text-gray-300 transition-colors"
+            aria-label="Toggle theme"
+          >
+            Light
+          </button>
+        </div>
+       
+        {/* Mobile Menu Toggle */}
+        <div class="flex md:hidden">
+          <button
+            id="menu-toggle"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Toggle mobile menu"
+            class="text-white hover:text-gray-300 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+       
+        {/* Mobile Menu */}
+        <div
+          id="mobile-menu"
+          class="absolute top-full right-0 bg-zinc-950 md:hidden transition-all duration-300 ease-in-out transform origin-top-right opacity-0 scale-95 pointer-events-none">
+          <div class="flex flex-col p-4 space-y-4">
+            <a href="/" class="text-white hover:text-gray-300 transition-colors"> Home </a>
+            <a href="/" class="text-white hover:text-gray-300 transition-colors"> About me </a>
+            <a href="/" class="text-white hover:text-gray-300 transition-colors"> Contact </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
 </section>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    if (!menuToggle || !mobileMenu) {
+      return;
+    }
+   
+    menuToggle.addEventListener("click", function () {
+      const isExpanded = this.getAttribute('aria-expanded') === 'true';
+     
+      // Toggle menu visibility and animation
+      if (isExpanded) {
+        mobileMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+        mobileMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
+      } else {
+        mobileMenu.classList.remove("opacity-0", "scale-95", "pointer-events-none");
+        mobileMenu.classList.add("opacity-100", "scale-100", "pointer-events-auto");
+      }
+     
+      // Update aria-expanded attribute
+      this.setAttribute('aria-expanded', (!isExpanded).toString());
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (event) => {
+      if (!menuToggle.contains(event.target as Node) && !mobileMenu.contains(event.target as Node)) {
+        mobileMenu.classList.remove("opacity-100", "scale-100", "pointer-events-auto");
+        mobileMenu.classList.add("opacity-0", "scale-95", "pointer-events-none");
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>

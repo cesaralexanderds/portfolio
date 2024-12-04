@@ -1,41 +1,108 @@
 ---
 interface Props {
 	title: string;
+  description?: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const { 
+  title = "César Alexander - Software Developer",
+  description = "Software developer specializing in C#, .NET, and Angular. View my projects, skills, and experience.",
+  ogImage = "/social-image.png" // Add a default social sharing image
+} = Astro.props;
+
+import '@fontsource-variable/rubik';
+import '@fontsource/Ubuntu';
+
+import About from '@/components/About.astro';
+import Contact from '@/components/Contact.astro';
+import Education from '@/components/Education.astro';
+import Footer from '@/components/Footer.astro';
+import Header from '@/components/Header.astro';
+import Hero from '@/components/Hero.astro';
+import Projects from '@/components/Projects.astro';
+import Skills from '@/components/Skills.astro';
+import Card from '@/components/Card.astro';
+
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
+  <head>
+    <!-- Essential Meta Tags -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalURL} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Keywords -->
+    <meta name="keywords" content="software developer, C#, .NET, Angular, web development, full stack developer" />
+
+    <!-- Additional SEO tags -->
+    <meta name="author" content="César Alexander" />
+    <meta name="robots" content="index, follow" />
+    
+    <title>{title}</title>
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "César Alexander",
+        "url": "${canonicalURL}",
+        "jobTitle": "Software Developer",
+        "knowsAbout": ["C#", ".NET", "Angular", "Web Development"],
+        "image": "${ogImage}",
+        "description": "${description}"
+      }
+    </script>
+  </head>
 	<body>
-		<slot />
+		<div class="relative min-h-screen w-full">
+			<div class="absolute inset-0 bg-gradient-to-br from-zinc-950 from-20% via-stone-950 via-50% to-neutral-950 to-90">
+			</div>
+				<div class="relative">
+					<Header/>
+					<Hero/>
+					<Projects/>
+					<About/>
+					<Skills/>
+					<Education/>
+					<Contact/>
+					<slot />
+				</div>
+		</div>
 	</body>
 </html>
 <style is:global>
 	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
+		color-scheme: dark light;
 	}
 	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		color: #fff;
+		font-family: 'Rubik Variable', sans-serif;
+		justify-content: center;
 	}
 	code {
 		font-family:
