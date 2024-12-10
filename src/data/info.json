@@ -1,0 +1,12 @@
+{
+    "about": 
+      {
+        "name": "César Alexander Delgadillo Sánchez",
+        "title": "Software Developer",
+        "description": ["Motivated Computer Science student with a solid foundation in software development, databases, and data science. Committed to continuous learning, with certifications in advanced web development and data science. Seeking to leverage my skills in challenging environments to create impactful technological solutions."],
+        "linkedin": "www.linkedin.com/in/c-a-d-s",
+        "education": " Currently pursuing a Bachelor's degree in Computer Science at the Universidad Autónoma de Nuevo León.",
+        "skillSet": ["C#", ".NET", "SQL Server", "Angular", "Firebase", "Ionic", "HTML", "CSS", "JavaScript", "Python", "Git"]
+      }
+    
+  }
