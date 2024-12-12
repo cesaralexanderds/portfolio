@@ -1,0 +1,64 @@
+{
+    "skills": [
+        {
+            "name": "Git",
+            "svg": "",
+            "color": "#ef5032"
+        },
+        {
+            "name": "Tailwind CSS",
+            "svg": "",
+            "color": "#1dc0cd"
+        },
+        {
+            "name": "Angular",
+            "svg": "",
+            "color": "#c50836"
+        },
+        {
+            "name": "C#",
+            "svg": "",
+            "color": "#74089a"
+        },
+        {
+            "name": "Firebase",
+            "svg": "",
+            "color": "#f58614"
+        },
+        {
+            "name": "HTML",
+            "svg": "",
+            "color": "#e3552b"
+        },
+        {
+            "name": "CSS",
+            "svg": "",
+            "color": "#1b75b8"
+        },
+        {
+            "name": "JavaScript",
+            "svg": "",
+            "color": "#f9dc43"
+        },
+        {
+            "name": "Python",
+            "svg": "",
+            "color": "#3d74a1"
+        },
+        {
+            "name": ".NET",
+            "svg": "",
+            "color": "#5632d5"
+        },
+        {
+            "name": "SQL Server",
+            "svg": "",
+            "color": "#a7a8aa"
+        },
+        {
+            "name": "Ionic",
+            "svg": "",
+            "color": "#508fff"
+        }
+       ]
+}

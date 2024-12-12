@@ -1,6 +1,9 @@
 ---
 import infoData from '../data/info.json';
 const { about } = infoData;
+
+import skillsData from '../data/skills.json';
+const { skills } = skillsData;
 ---
 
 <section id="about" class="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
@@ -9,22 +12,44 @@ const { about } = infoData;
           About me
     </h2>
 
-    <div class="flex flex-wrap md:w-full items-center md:justify-between">
-            <p class="md:w-3/6 text-xl text-zinc-200 [&>strong]:text-indigo-500">
+    <div class="flex flex-wrap md:w-full items-center md:justify-between mb-8">
+        <p class="md:w-3/6 text-xl text-zinc-200 [&>strong]:text-indigo-500">
                 {about.description}
-            </p>
-            <div
-            class="mt-8 md:mt-0 flex flex-col gap-2 dark:text-white max-w-md md:w-3/6 dark:bg-opacity-25"
-            >
-            <h3 class="text-2xl font-bold">Education
-
+        </p>
+        <div class="mt-8 md:mt-0 flex flex-col gap-2 dark:text-white max-w-md md:w-3/6 dark:bg-opacity-25">
+            
+            <h3 class="text-2xl font-bold">
+                Education
             </h3>
+
             <div class="text-xl text-zinc-200">
                 {about.education}
             </div>
+
             <div class="mt-3 flex flex-row justify-start text-zinc-200">
                 <p class="text-lg">Expected Graduation in June, 2026</p>
             </div>
-          </div>
+
         </div>
+    </div>
+
+    <h2 class="text-3xl font-semibold mb-8">
+        Skill and Tools
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-2 ">
+        {skills.map((skill) => (
+            <article 
+            class="py-3 items-center hover:bg-neutral-950 
+            hover:bg-opacity-65 bg-neutral-950 bg-opacity-25 rounded-full overflow-hidden 
+            hover:transform hover:scale-[1.02] transition-all shadow-lg shadow-neutral-950/70 
+            hover:shadow-xl hover:shadow-indigo-950/70"  style={`background-color: ${skill.color}40`}>
+            
+                <div class="text-center">
+                    <span class="text-md font-semibold ">{skill.name}</>
+                </div>
+            
+            
+            </article>
+        ))}
+    </div>
 </section>
