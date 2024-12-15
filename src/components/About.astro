@@ -18,7 +18,7 @@ const { skills } = skillsData;
         </p>
         <div class="mt-8 md:mt-0 flex flex-col gap-2 dark:text-white max-w-md md:w-3/6 dark:bg-opacity-25">
             
-            <h3 class="text-2xl font-bold">
+            <h3 class="text-2xl font-medium text-zinc-200">
                 Education
             </h3>
 
@@ -33,23 +33,18 @@ const { skills } = skillsData;
         </div>
     </div>
 
-    <h2 class="text-3xl font-semibold mb-8">
+    <h2 class="text-2xl font-semibold py-10">
         Skill and Tools
     </h2>
-    <div class="grid grid-cols-2 md:grid-cols-6 gap-2 ">
+    <div class="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-1">
         {skills.map((skill) => (
-            <article 
-            class="py-3 items-center hover:bg-neutral-950 
-            hover:bg-opacity-65 bg-neutral-950 bg-opacity-25 rounded-full overflow-hidden 
-            hover:transform hover:scale-[1.02] transition-all shadow-lg shadow-neutral-950/70 
-            hover:shadow-xl hover:shadow-indigo-950/70"  style={`background-color: ${skill.color}40`}>
+
             
-                <div class="text-center">
-                    <span class="text-md font-semibold ">{skill.name}</>
+                <div class="py-4 w-full text-center flex flex-col items-center group hover:scale-[1.25]">
+                    <img src={skill.svg} class="h-16 w-16 space-x-3 mb-3 md:filter md:grayscale group-hover:filter-none transition-all drop-shadow-lg hover:drop-shadow-2xl shadow-secondary" alt={skill.name}/>
+                    <span class="text-md font-medium text-zinc-200 md:opacity-0 group-hover:opacity-100 transition-opacity">{skill.name}</>
                 </div>
-            
-            
-            </article>
+
         ))}
     </div>
 </section>

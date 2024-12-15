@@ -2,63 +2,78 @@
     "skills": [
         {
             "name": "Git",
-            "svg": "",
+            "svg": "/public/git.svg",
             "color": "#ef5032"
         },
         {
             "name": "Tailwind CSS",
-            "svg": "",
+            "svg": "/public/tailwindcss.svg",
             "color": "#1dc0cd"
         },
         {
             "name": "Angular",
-            "svg": "",
+            "svg": "/public/angular.svg",
             "color": "#c50836"
         },
         {
             "name": "C#",
-            "svg": "",
+            "svg": "/public/csharp.svg",
             "color": "#74089a"
         },
         {
             "name": "Firebase",
-            "svg": "",
+            "svg": "/public/firebase.svg",
             "color": "#f58614"
         },
         {
             "name": "HTML",
-            "svg": "",
-            "color": "#e3552b"
+            "svg": "/public/html5.svg",
+            "color": "#e34c26"
         },
         {
             "name": "CSS",
-            "svg": "",
+            "svg": "/public/css.svg",
             "color": "#1b75b8"
         },
         {
             "name": "JavaScript",
-            "svg": "",
+            "svg": "/public/javascript.svg",
             "color": "#f9dc43"
         },
         {
             "name": "Python",
-            "svg": "",
+            "svg": "/public/python.svg",
             "color": "#3d74a1"
         },
         {
             "name": ".NET",
-            "svg": "",
+            "svg": "/public/dotnet.svg",
             "color": "#5632d5"
         },
         {
             "name": "SQL Server",
-            "svg": "",
+            "svg": "/public/sql-server.svg",
             "color": "#a7a8aa"
         },
         {
             "name": "Ionic",
-            "svg": "",
+            "svg": "/public/ionic-dark.svg",
             "color": "#508fff"
+        },
+        {
+            "name": "TypeScript",
+            "svg": "/public/typescript.svg",
+            "color": "#61dbfb"
+        },
+        {
+            "name": "MySQL",
+            "svg": "/public/mysql.svg",
+            "color": "#41b883"
+        },
+        {
+            "name": "Astro",
+            "svg": "/public/astro_dark.svg",
+            "color": "#41b883"
         }
-       ]
+    ]
 }
