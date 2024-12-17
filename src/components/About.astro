@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import infoData from '../data/info.json';
 const { about } = infoData;
 
@@ -33,18 +34,4 @@ const { skills } = skillsData;
         </div>
     </div>
 
-    <h2 class="text-2xl font-semibold py-10">
-        Skill and Tools
-    </h2>
-    <div class="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-1">
-        {skills.map((skill) => (
-
-            
-                <div class="py-4 w-full text-center flex flex-col items-center group hover:scale-[1.25]">
-                    <img src={skill.svg} class="h-16 w-16 space-x-3 mb-3 md:filter md:grayscale group-hover:filter-none transition-all drop-shadow-lg hover:drop-shadow-2xl shadow-secondary" alt={skill.name}/>
-                    <span class="text-md font-medium text-zinc-200 md:opacity-0 group-hover:opacity-100 transition-opacity">{skill.name}</>
-                </div>
-
-        ))}
-    </div>
 </section>

@@ -1,12 +1,15 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-import Card from '../components/Card.astro';
+
+import About from '@/components/About.astro';
+import Hero from '@/components/Hero.astro';
+import Projects from '@/components/Projects.astro';
+import Skills from '@/components/Skills.astro';
 ---
 
-<Layout title="alexander's portfolio!">
-
+<Layout title="cesar alexander's developer portfolio!" description="Motivated Computer Science student with a solid foundation in software development, databases, and data science. Committed to continuous learning, with certifications in advanced web development and data science. Seeking to leverage my skills in challenging environments to create impactful technological solutions.">
+    <Hero/>
+    <Projects/>
+    <About/>
+    <Skills/>
 </Layout>
-
-<style>
-
-</style>

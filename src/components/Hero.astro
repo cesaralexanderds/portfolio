@@ -1,10 +1,20 @@
+---
+import { Image } from 'astro:assets';
+// Import your image
+import profilePhoto from '/public/photo.webp';
+---
+
 <section  class="py-16 section md:py-36 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl" id="home">
     <div class="flex flex-col md:flex-row justify-center md:space-x-96">
         <div class="">
             
-            <img src="public/IMG_5937.JPG" class="h-24 mb-6 mt-10 md:mt-0 rounded-full md:mx-0" alt="">
+            <Image src={profilePhoto} width={96} 
+            height={96}
+            class="mb-6 mt-10 md:mt-0 rounded-full md:mx-0"
+            alt="César Alexander's profile photo"
+            loading="eager" />
             
-            <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white  ">
+            <h1 class="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white " id="contact">
                 Hi! I'm César Alexander 
             </h1>
             <p class="tracking-[0.06em] text-xl text-zinc-200">
@@ -15,7 +25,8 @@
                 committed to continuous learning, with certifications in advanced web development 
                 and basic data science
             </p>
-            <div class="inline-flex mt-10 space-x-6 justify-items-start items-center font-light">
+            <div class="inline-flex mt-10 space-x-6 justify-items-start items-center font-light " >
+                <span class="text-xl text-zinc-200 font-" > contact: </span>
                 <a class=" px-2 py-1 transition" href="https://github.com/cesaralexanderds/" target="_blank" rel="noopener noreferrer">
                     <img src="public/github-mark-white.svg" class="h-7 hover:scale-[1.15]">
                 </a>

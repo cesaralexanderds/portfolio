@@ -1,0 +1,32 @@
+---
+import skillsData from '../data/skills.json';
+const { skills } = skillsData;
+import { Image } from 'astro:assets';
+
+---
+
+<section class="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
+    
+    <h2 class="text-3xl font-semibold mb-10">
+        Skill and Tools
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-1 items-center justify-center">
+        {skills.map((skill) => (
+
+            
+                <div class="py-4 w-full text-center flex flex-col items-center group hover:scale-[1.25]">
+                    <Image
+                        src={skill.svg}
+                        width={64}
+                        height={64}
+                        class="mb-3 md:filter md:grayscale group-hover:filter-none transition-all drop-shadow-lg hover:drop-shadow-2xl shadow-secondary"
+                        alt={`${skill.name} icon`}
+                        loading="lazy"
+                        decoding="async"
+                        />
+                    <span class="text-md font-medium text-zinc-200 md:opacity-0 group-hover:opacity-100 transition-opacity">{skill.name}</>
+                </div>
+
+        ))}
+    </div>
+</section>

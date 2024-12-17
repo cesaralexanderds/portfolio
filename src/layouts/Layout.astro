@@ -6,23 +6,17 @@ interface Props {
 }
 
 const { 
-  title = "César Alexander - Software Developer",
-  description = "Software developer specializing in C#, .NET, and Angular. View my projects, skills, and experience.",
-  ogImage = "/social-image.png" // Add a default social sharing image
+  title,
+  description,
+  ogImage = "/favicon.svg" // Add a default social sharing image
 } = Astro.props;
 
 import '@fontsource-variable/rubik';
 import '@fontsource/Ubuntu';
 
-import About from '@/components/About.astro';
-import Contact from '@/components/Contact.astro';
-import Education from '@/components/Education.astro';
 import Footer from '@/components/Footer.astro';
 import Header from '@/components/Header.astro';
-import Hero from '@/components/Hero.astro';
-import Projects from '@/components/Projects.astro';
-import Skills from '@/components/Skills.astro';
-import Card from '@/components/Card.astro';
+
 
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -32,6 +26,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!doctype html>
 <html lang="en">
   <head>
+
+    
     <!-- Essential Meta Tags -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,8 +35,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <link rel="canonical" href={canonicalURL} />
     
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/public/favicon.svg" />
+
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
@@ -65,33 +61,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <title>{title}</title>
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "César Alexander",
-        "url": "${canonicalURL}",
-        "jobTitle": "Software Developer",
-        "knowsAbout": ["C#", ".NET", "Angular", "Web Development"],
-        "image": "${ogImage}",
-        "description": "${description}"
-      }
-    </script>
+
   </head>
 	<body>
 		<div class="relative min-h-screen w-full">
 			<div class="absolute inset-0 bg-gradient-to-tl from-primary from-10% via-zinc-950 via-50% to-neutral-950 to-80%">
 			</div>
 				<div class="relative">
-					<Header/>
-					<Hero/>
-					<Projects/>
-					<About/>
-					<Skills/>
-					<Education/>
-					<Contact/>
-					<slot />
+          <Header />
+          <slot />
+          <Footer />
 				</div>
 		</div>
 	</body>
@@ -103,6 +82,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 	html {
 		font-family: 'Rubik Variable', sans-serif;
 		justify-content: center;
+    scroll-behavior: smooth;
 	}
 	code {
 		font-family:
@@ -115,4 +95,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			Courier New,
 			monospace;
 	}
+
+
 </style>
