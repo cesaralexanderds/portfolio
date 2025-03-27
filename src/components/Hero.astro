@@ -8,9 +8,9 @@ import profilePhoto from '/public/photo.webp';
     <div class="flex flex-col md:flex-row justify-center md:space-x-96">
         <div class="">
             
-            <Image src={profilePhoto} width={96} 
-            height={96}
-            class="mb-6 mt-10 md:mt-0 rounded-full md:mx-0"
+            <Image src={profilePhoto}
+            height={140}
+            class="mb-10 mt-10 md:mt-0 rounded-full md:mx-0"
             alt="César Alexander's profile photo"
             loading="eager" />
             
@@ -20,11 +20,16 @@ import profilePhoto from '/public/photo.webp';
             <p class="tracking-[0.06em] text-xl text-zinc-200">
                 I'm a software developer
             </p>
-            <p class="md:w-2/3 mt-6 text-xl text-zinc-200 [&>strong]:text-hoverText">
-                Specializing in technologies like <strong>C#, .NET, Angular</strong>
-                committed to continuous learning, with certifications in advanced web development 
-                and basic data science
-            </p>
+            <div class="md:w-2/3 mt-6 text-xl text-zinc-200">
+                <p class=" [&>strong]:text-indigo-400">
+                    Specializing in technologies like <strong>Angular, .NET, Google Cloud Platfrom</strong>
+                    committed to continuous learning, with certifications in advanced web development 
+                    and data science.
+                </p>
+                <p class="text-xl">
+                    Currently doing an internship as a Data Engineer @ <span class="text-orange-500 font-bold">DEACERO</span>.
+                </p>
+            </div>
             <div class="inline-flex mt-10 space-x-6 justify-items-start items-center font-light " >
                 <span class="text-xl text-zinc-200 font-" > contact: </span>
                 <a class=" px-2 py-1 transition" href="https://github.com/cesaralexanderds/" target="_blank" rel="noopener noreferrer">
