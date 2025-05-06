@@ -2,11 +2,12 @@
     "experience": [
       {
         "jobTitle": "Data Engineer Intern",
-        "company": "DEACERO",
-        "description": "BigQuery tables maintenance. Created and maintained data pipelines for data ingestion and processing via Dataplex Catalog.",
-        "technologies": ["Python", "MSSQL", "Google Cloud Platform", "BigQuery", "Dataplex"],
+        "company": "Grupo DEACERO",
+        "description": "Implemented a system to track and update information about on-prem servers on Google Cloud Platform. Created and maintained data pipelines for data ingestion and processing. Used ETL plaforms such as Airbyte and Dataplex to manage data flow and storage.",
+        "technologies": ["Python", "MSSQL", "Google Cloud Platform", "BigQuery", "Dataplex", "Airbyte", "ETLs"],
         "startDate": "March 2025",
-        "endDate": "Present"
+        "endDate": "Present",
+        "location": "Monterrey, Nuevo León, México"
       }
     ]
   }
