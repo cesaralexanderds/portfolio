@@ -13,8 +13,8 @@ const {
 
 import '@fontsource-variable/rubik';
 
-import Footer from '@/components/Footer.astro';
-import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.jsx';
+import Header from '@/components/Header.jsx';
 
 
 
@@ -67,9 +67,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			<div class="absolute inset-0 bg-gradient-to-tl from-primary from-10% via-zinc-950 via-50% to-neutral-950 to-80%">
 			</div>
 				<div class="relative">
-          <Header />
+          <Header client:visible />
           <slot />
-          <Footer />
+          <Footer client:visible />
 				</div>
 		</div>
 	</body>
