@@ -12,11 +12,11 @@ const Skills = () => {
       <div className="grid grid-cols-2 md:grid-cols-6 lg:grid-cols-8 gap-1 items-center justify-center">
         {skills.map((skill, index) => (
           <div 
-            key={skill.name || index} // Use skill.name or index as key
+            key={skill.name || index}
             className="py-4 w-full text-center flex flex-col items-center group hover:scale-[1.25] transition-transform duration-300 ease-in-out"
           >
             <img
-              src={skill.svg} // Assuming skill.svg contains a path accessible from the public folder (e.g., /icons/react.svg)
+              src={skill.svg}
               width={64}
               height={64}
               className="mb-3 md:filter md:grayscale group-hover:filter-none transition-all drop-shadow-lg hover:drop-shadow-2xl shadow-secondary"

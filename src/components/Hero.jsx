@@ -1,6 +1,5 @@
 import React from 'react';
-// Assuming profilePhoto is in public/photo.webp
-// If you need Astro-like image optimization, consider a React image component library.
+
 const profilePhotoSrc = '/photo.webp'; 
 
 const Hero = () => {
@@ -11,7 +10,7 @@ const Hero = () => {
           <img 
             src={profilePhotoSrc} 
             height={160}
-            width={160} // Note: HTML height attribute might not work as expected without width, or for responsive images. Consider CSS for sizing.
+            width={160}
             className="mb-10 mt-10 md:mt-0 rounded-full md:mx-0" 
             alt="César Alexander's profile photo" 
             loading="eager" 
@@ -54,7 +53,6 @@ const Hero = () => {
                 <path d="M18 15l3 3l-3 3"></path>
               </svg>
             </a>
-            {/* Assuming Resume PDF is moved to public folder for direct download */}
             <a className="hidden px-2 py-1 transition" href="/Resume-Cesar-Alexander-Delgadillo-Sanchez.pdf" download="Resume-Cesar-Alexander-Delgadillo-Sanchez.pdf">
               <img src="/cv.svg" className="h-7 hover:scale-[1.15] transition" alt="Descargar CV" />
             </a>

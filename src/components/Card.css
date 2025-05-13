@@ -22,24 +22,20 @@
   opacity: 0.8;
 }
 
-.link-card h2 { /* Changed from direct h2 to .link-card h2 for better scoping if not using CSS modules */
+.link-card h2 {
   margin: 0;
   font-size: 1.25rem;
   transition: color 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.link-card p { /* Changed from direct p to .link-card p */
+.link-card p {
   margin-top: 0.5rem;
   margin-bottom: 0;
 }
 
 .link-card:is(:hover, :focus-within) {
   background-position: 0;
-  /* background-image: var(--accent-gradient); Assuming --accent-gradient is globally defined or replace with actual value */
-  /* If --accent-gradient comes from Astro/Tailwind config, this needs to be handled appropriately */
 }
 
 .link-card:is(:hover, :focus-within) h2 {
-  /* color: rgb(var(--accent-light)); Assuming --accent-light is globally defined or replace with actual value */
-  /* If --accent-light comes from Astro/Tailwind config, this needs to be handled appropriately */
 } 

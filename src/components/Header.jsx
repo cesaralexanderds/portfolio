@@ -30,13 +30,13 @@ const Header = () => {
               className="text-white hover:text-gray-300 transition-colors"
               aria-label="Change language"
             >
-              {/* Language change icon/text can go here */}
+              
             </button>
             <button
               className="text-white hover:text-gray-300 transition-colors"
               aria-label="Toggle theme"
             >
-              {/* Theme toggle icon/text can go here */}
+              
             </button>
           </div>
         </div>

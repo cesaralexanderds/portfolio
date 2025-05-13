@@ -10,7 +10,7 @@ const Projects = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project, index) => (
           <article 
-            key={project.id || index} // Use project.id if available, otherwise fallback to index
+            key={project.id || index} 
             className="bg-zinc-800/50 rounded-lg overflow-hidden border border-zinc-600/50 transition-all hover:scale-[1.01] hover:border-zinc-600/70 hover:shadow-lg hover:shadow-zinc-400/20"
           >
             <div className="p-6 flex flex-col h-full">
@@ -30,12 +30,12 @@ const Projects = () => {
                 <div className="pt-6 mt-auto">
                   <a 
                     href={project.githubUrl} 
-                    className="inline-flex items-center text-zinc-400 hover:text-white transition-colors" // Removed 'hidden' class, was it intentional?
+                    className="inline-flex items-center text-zinc-400 hover:text-white transition-colors" 
                     target="_blank" 
                     rel="noopener noreferrer"
                   >
                     <img 
-                      src="/github-mark-white.svg" // Assuming this is in the public folder
+                      src="/github-mark-white.svg" 
                       className="h-6 opacity-70 hover:opacity-100 mr-2" 
                       alt="GitHub logo" 
                       loading="lazy" 
