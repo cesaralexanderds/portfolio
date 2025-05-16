@@ -3,20 +3,20 @@
       {
         "title": "Backend Certification Project",
         "description": "Developed a banking application requiring user authentication to access the API. Authentication handled via JWT Tokens.",
-        "technologies": ["C#", ".NET", "Angular"],
-        "githubUrl": ""
+        "technologies": ["C#", ".NET"],
+        "githubUrl": "https://github.com/cesaralexanderds/dotnetcourse"
       },
       {
         "title": "Instagram Clone",
         "description": "Developed a fully functional Instagram clone; frontend built using Angular and Ionic.",
         "technologies": ["Angular", "Ionic", "Firebase"],
-        "githubUrl": "https://github.com/yourusername/another-repo"
+        "githubUrl": ""
       },
       {
         "title": "Event management app",
         "description": "Designed and built a CRUD application for event creation and management.",
         "technologies": ["C#", ".NET", "SQL Server", "Angular"],
-        "githubUrl": "https://github.com/yourusername/another-repo"
+        "githubUrl": ""
       }
     ]
   }
