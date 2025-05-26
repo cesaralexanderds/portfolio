@@ -1,0 +1,14 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ContactForm from '@/components/ContactForm.jsx';
+import ContactInfo from '@/components/ContactInfo.jsx';
+import ScrollToTop from '@/components/ScrollToTop';
+---
+
+<Layout title="Contact - César Alexander" description="Get in touch with César Alexander. Send a message or connect through social media.">
+    <ScrollToTop client:visible/>
+    <section class="py-16 section md:py-36 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
+        <ContactInfo client:visible />
+        <ContactForm client:visible />
+    </section>
+</Layout> 

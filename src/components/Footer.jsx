@@ -10,19 +10,6 @@ const Footer = () => {
       <div
         className="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between lg:justify-between py-4"
       >
-        <ul
-          className="flex flex-wrap items-center mt-3 text-sm font-medium dark:text-white/90 sm:mt-0"
-        >
-          <li>
-            <a href="#about" className="hover:underline me-4 md:me-6">About</a>
-          </li>
-          <li>
-            <a href="#contact" className="hover:underline me-4 md:me-6">Contact</a>
-          </li>
-          <li>
-            <a href="#resume" className="hover:underline me-4 md:me-6">Resume</a>
-          </li>
-        </ul>
         <span className="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90">
           © {currentYear} Made with <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="hover:underline">React</a> and <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" className="hover:underline">Astro</a>
         </span>

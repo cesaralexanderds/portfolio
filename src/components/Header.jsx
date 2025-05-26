@@ -9,20 +9,20 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto h-10 flex justify-between md:justify-between items-center">
           <div className="items-center justify-start">
-            <a href="#home" className="text-white text-2xl font-bold flex" aria-label="Home"> cads </a>
+            <a href="/" className="text-white text-2xl font-bold flex" aria-label="Home"> cads </a>
           </div>
 
           <div className="inline-flex space-x-6 items-center justify-end md:hidden">
-            <a href="#contact" className="text-white hover:text-gray-300 transition-colors"> Contact </a>
-            <a href="#projects" className="text-white hover:text-gray-300 transition-colors"> Projects </a>
-            <a href="#about" className="text-white hover:text-gray-300 transition-colors"> About me </a>
+            <a href="/contact" className="text-white hover:text-gray-300 transition-colors"> Contact </a>
+            <a href="/#projects" className="text-white hover:text-gray-300 transition-colors"> Projects </a>
+            <a href="/#about" className="text-white hover:text-gray-300 transition-colors"> About me </a>
           </div>
 
           <div className="hidden rounded-full px-4 py-2 md:flex space-x-9 items-center">
-            <a href="#home" className="text-white hover:text-gray-300 transition-colors"> Home </a>
-            <a href="#contact" className="text-white hover:text-gray-300 transition-colors"> Contact </a>
-            <a href="#projects" className="text-white hover:text-gray-300 transition-colors"> Projects </a>
-            <a href="#about" className="text-white hover:text-gray-300 transition-colors"> About me </a>
+            <a href="/" className="text-white hover:text-gray-300 transition-colors"> Home </a>
+            <a href="/contact" className="text-white hover:text-gray-300 transition-colors"> Contact </a>
+            <a href="/#projects" className="text-white hover:text-gray-300 transition-colors"> Projects </a>
+            <a href="/#about" className="text-white hover:text-gray-300 transition-colors"> About me </a>
           </div>
 
           <div className="hidden md:flex items-center space-x-4">

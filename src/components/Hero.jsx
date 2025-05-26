@@ -49,64 +49,23 @@ const Hero = () => {
               Currently doing an internship as a Data Engineer @ <span className="text-orange-500 font-bold">DEACERO</span>.
             </p>
           </motion.div>
+         
           <motion.div 
-            className="inline-flex mt-10 space-x-6 justify-items-start items-center font-light"
+            className="mt-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
+            transition={{ duration: 0.5, delay: 1.0 }}
           >
-            <span className="text-xl text-zinc-200">Contact:</span>
             <motion.a 
-              className="px-2 py-1 transition" 
-              href="https://github.com/cesaralexanderds/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.15 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
+              href="/contact"
+              className="inline-flex items-center px-6 py-3 bg-transparent border border-white hover:bg-indigo-600 text-white font-medium rounded-lg transition-colors duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              <img src="/github-mark-white.svg" className="h-7" alt="GitHub" />
-            </motion.a>
-            <motion.a 
-              className="px-2 py-1 transition" 
-              href="https://www.linkedin.com/in/c-a-d-s/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.15 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M4 4m0 2a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2z"></path>
-                <path d="M8 11l0 5"></path>
-                <path d="M8 8l0 .01"></path>
-                <path d="M12 16l0 -5"></path>
-                <path d="M16 16v-3a2 2 0 0 0 -4 0"></path>
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
-            </motion.a>
-            <motion.a 
-              className="px-2 py-1 transition" 
-              href="mailto:cesaralexanderds@gmail.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              whileHover={{ scale: 1.15 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <svg className="h-8 w-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M12 18h-7a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7.5"></path>
-                <path d="M3 6l9 6l9 -6"></path>
-                <path d="M15 18h6"></path>
-                <path d="M18 15l3 3l-3 3"></path>
-              </svg>
-            </motion.a>
-            <motion.a 
-              className="hidden px-2 py-1 transition" 
-              href="/Resume-Cesar-Alexander-Delgadillo-Sanchez.pdf" 
-              download="Resume-Cesar-Alexander-Delgadillo-Sanchez.pdf"
-              whileHover={{ scale: 1.15 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <img src="/cv.svg" className="h-7" alt="Descargar CV" />
+              Contact
             </motion.a>
           </motion.div>
         </div>

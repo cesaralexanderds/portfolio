@@ -74,6 +74,11 @@
             "name": "Astro",
             "svg": "/astro_dark.svg",
             "color": "#41b883"
+        },
+        {
+            "name": "React",
+            "svg": "/react.svg",
+            "color": "#61dbfb"
         }
     ]
 }
