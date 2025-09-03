@@ -29,7 +29,7 @@ const About = () => {
   return (
     <section id="about" className="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
       <motion.h2 
-        className="text-3xl font-semibold mb-8"
+        className="text-3xl font-semibold mb-8 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -51,7 +51,7 @@ const About = () => {
           but it did import it. If there was an image meant to be here, you'll need to add an <img> tag.
         */}
         <motion.p 
-          className="md:w-3/6 text-xl text-zinc-200 [&>strong]:text-indigo-500"
+          className="md:w-3/6 text-xl text-gray-700 dark:text-zinc-200 [&>strong]:text-indigo-500"
           variants={itemVariants}
           dangerouslySetInnerHTML={{ __html: about.description }}
         >
@@ -63,23 +63,23 @@ const About = () => {
             */}
         </motion.p>
         <motion.div 
-          className="mt-8 md:mt-0 flex flex-col gap-2 dark:text-white max-w-md md:w-3/6 dark:bg-opacity-25"
+          className="mt-8 md:mt-0 flex flex-col gap-2 text-gray-900 dark:text-white max-w-md md:w-3/6 dark:bg-opacity-25"
           variants={itemVariants}
         >
           <motion.h3 
-            className="text-2xl font-medium text-zinc-200"
+            className="text-2xl font-medium text-gray-700 dark:text-zinc-200"
             variants={itemVariants}
           >
             Education
           </motion.h3>
           <motion.div 
-            className="text-xl text-zinc-200"
+            className="text-xl text-gray-700 dark:text-zinc-200"
             variants={itemVariants}
           >
             {about.education}
           </motion.div>
           <motion.div 
-            className="mt-3 flex flex-row justify-start text-zinc-200"
+            className="mt-3 flex flex-row justify-start text-gray-700 dark:text-zinc-200"
             variants={itemVariants}
           >
             <p className="text-lg">Expected Graduation in June, 2026</p>

@@ -1,6 +1,36 @@
 {
     "skills": [
         {
+            "name": "Google Cloud Platform",
+            "svg": "/gcp.svg",
+            "color": "#4285F4"
+        },
+        {
+            "name": "Airbyte",
+            "svg": "/Airbyte.svg",
+            "color": "#000000"
+        },
+        {
+            "name": "HTML",
+            "svg": "/html5.svg",
+            "color": "#e34c26"
+        },
+        {
+            "name": "CSS",
+            "svg": "/css.svg",
+            "color": "#1b75b8"
+        },
+        {
+            "name": "JavaScript",
+            "svg": "/javascript.svg",
+            "color": "#f9dc43"
+        },
+        {
+            "name": "Python",
+            "svg": "/python.svg",
+            "color": "#3d74a1"
+        },
+        {
             "name": "Git",
             "svg": "/git.svg",
             "color": "#ef5032"
@@ -24,27 +54,7 @@
             "name": "Firebase",
             "svg": "/firebase.svg",
             "color": "#f58614"
-        },
-        {
-            "name": "HTML",
-            "svg": "/html5.svg",
-            "color": "#e34c26"
-        },
-        {
-            "name": "CSS",
-            "svg": "/css.svg",
-            "color": "#1b75b8"
-        },
-        {
-            "name": "JavaScript",
-            "svg": "/javascript.svg",
-            "color": "#f9dc43"
-        },
-        {
-            "name": "Python",
-            "svg": "/python.svg",
-            "color": "#3d74a1"
-        },
+        },        
         {
             "name": ".NET",
             "svg": "/dotnet.svg",
@@ -80,5 +90,6 @@
             "svg": "/react.svg",
             "color": "#61dbfb"
         }
+        
     ]
 }

@@ -29,7 +29,7 @@ const Skills = () => {
   return (
     <section className="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
       <motion.h2 
-        className="text-3xl font-semibold mb-10"
+        className="text-3xl font-semibold mb-10 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
@@ -63,7 +63,7 @@ const Skills = () => {
               decoding="async"
               whileHover={{ scale: 1.1 }}
             />
-            <span className="text-md font-medium text-zinc-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span className="text-md font-medium text-gray-700 dark:text-zinc-200 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               {skill.name}
             </span>
           </motion.div>

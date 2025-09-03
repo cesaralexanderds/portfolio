@@ -20,7 +20,7 @@ const ContactInfo = () => {
         transition={{ duration: 0.5, delay: 0.4 }}
       >
         <motion.a 
-          className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors duration-200" 
+          className="inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-800 bg-gray-200 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-900 dark:text-white rounded-lg transition-colors duration-200" 
           href="https://github.com/cesaralexanderds/" 
           target="_blank" 
           rel="noopener noreferrer"
@@ -29,7 +29,8 @@ const ContactInfo = () => {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
         >
-          <img src="/github-mark-white.svg" className="h-5 w-5 mr-2" alt="" />
+          <img src="/github-mark-white.svg" className="h-5 w-5 mr-2 dark:inline hidden" alt="" />
+          <img src="/github-mark-white.svg" className="h-5 w-5 mr-2 dark:hidden inline filter invert" alt="" />
           <span>GitHub</span>
         </motion.a>
         
@@ -81,7 +82,7 @@ const ContactInfo = () => {
       >
         <motion.a 
           href="/"
-          className="inline-flex items-center px-6 py-3 bg-transparent border border-white hover:bg-indigo-600 text-white font-medium rounded-lg transition-colors duration-200"
+          className="inline-flex items-center px-6 py-3 bg-transparent border border-gray-900 dark:border-white hover:bg-indigo-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors duration-200"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           aria-label="Go back to the home page"

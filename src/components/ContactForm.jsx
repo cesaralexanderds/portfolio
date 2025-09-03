@@ -47,7 +47,7 @@ const ContactForm = () => {
       transition={{ duration: 0.5, delay: 0.3 }}
     >
       <motion.h2 
-        className="text-3xl font-bold text-white mb-8 text-center"
+        className="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.4 }}
@@ -68,7 +68,7 @@ const ContactForm = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
           >
-            <label htmlFor="name" className="block text-sm font-medium text-zinc-200 mb-2">
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-zinc-200 mb-2">
               Name *
             </label>
             <input
@@ -78,7 +78,7 @@ const ContactForm = () => {
               value={formData.name}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
               placeholder="Your name"
             />
           </motion.div>
@@ -88,7 +88,7 @@ const ContactForm = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.7 }}
           >
-            <label htmlFor="email" className="block text-sm font-medium text-zinc-200 mb-2">
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-zinc-200 mb-2">
               Email *
             </label>
             <input
@@ -98,7 +98,7 @@ const ContactForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="w-full px-4 py-3 bg-zinc-800 border border-zinc-700 rounded-lg text-white placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 bg-white dark:bg-zinc-800 border border-gray-300 dark:border-zinc-700 rounded-lg text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-zinc-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all duration-200"
               placeholder="your.email@example.com"
             />
           </motion.div>
@@ -109,7 +109,7 @@ const ContactForm = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.8 }}
         >
-          <label htmlFor="subject" className="block text-sm font-medium text-zinc-200 mb-2">
+          <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-zinc-200 mb-2">
             Subject *
           </label>
           <input
@@ -129,7 +129,7 @@ const ContactForm = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.9 }}
         >
-          <label htmlFor="message" className="block text-sm font-medium text-zinc-200 mb-2">
+          <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-zinc-200 mb-2">
             Message *
           </label>
           <textarea
@@ -154,8 +154,8 @@ const ContactForm = () => {
             disabled={isSubmitting || !isFormValid}
             className={`w-full px-8 py-4 font-medium rounded-lg transition-all duration-200 flex items-center justify-center space-x-2 border ${
               isFormValid 
-                ? 'border-white bg-indigo-600 hover:bg-indigo-700 text-white' 
-                : 'bg-transparent text-white hover:bg-slate-700'
+                ? 'border-indigo-600 bg-indigo-600 hover:bg-indigo-700 text-white' 
+                : 'bg-transparent border-gray-400 dark:border-white text-gray-900 dark:text-white hover:bg-gray-200 dark:hover:bg-slate-700'
             } ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
             whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
             whileTap={{ scale: isSubmitting ? 1 : 0.98 }}

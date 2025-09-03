@@ -33,7 +33,7 @@ const Projects = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-3xl font-semibold mb-8 text-center md:text-left"
+        className="text-3xl font-semibold mb-8 text-center md:text-left text-gray-900 dark:text-white"
       >
         Projects
       </motion.h2>
@@ -52,10 +52,10 @@ const Projects = () => {
               scale: 1.02,
               transition: { duration: 0.2 }
             }}
-            className="bg-zinc-800/50 rounded-lg overflow-hidden border border-zinc-600/50 hover:border-zinc-600/70 hover:shadow-lg hover:shadow-zinc-400/20"
+            className="bg-white/90 dark:bg-zinc-800/50 rounded-lg overflow-hidden border border-gray-300 dark:border-zinc-600/50 hover:border-gray-400 dark:hover:border-zinc-600/70 hover:shadow-lg hover:shadow-gray-400/20 dark:hover:shadow-zinc-400/20"
           >
             <div className="p-6 flex flex-col h-full">
-              <h3 className="text-xl font-bold text-white mb-4">{project.title}</h3>
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{project.title}</h3>
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.technologies.map((tech, techIndex) => (
                   <motion.span 
@@ -63,18 +63,18 @@ const Projects = () => {
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.1 * techIndex }}
-                    className="px-3 py-1 bg-zinc-900/80 rounded-full text-xs text-zinc-300 border border-zinc-700/50"
+                    className="px-3 py-1 bg-gray-200 dark:bg-zinc-900/80 rounded-full text-xs text-gray-700 dark:text-zinc-300 border border-gray-300 dark:border-zinc-700/50"
                   >
                     {tech}
                   </motion.span>
                 ))}
               </div>
-              <p className="text-zinc-300 leading-relaxed mt-4 flex-grow">{project.description}</p>
+              <p className="text-gray-600 dark:text-zinc-300 leading-relaxed mt-4 flex-grow">{project.description}</p>
               {project.githubUrl && (
                 <div className="pt-6 mt-auto">
                   <motion.a 
                     href={project.githubUrl} 
-                    className="inline-flex items-center text-zinc-400 hover:text-white transition-colors" 
+                    className="inline-flex items-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-colors" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     whileHover={{ x: 5 }}
@@ -82,7 +82,13 @@ const Projects = () => {
                   >
                     <img 
                       src="/github-mark-white.svg" 
-                      className="h-6 opacity-70 hover:opacity-100 mr-2" 
+                      className="h-6 opacity-70 hover:opacity-100 mr-2 dark:inline hidden filter invert" 
+                      alt="GitHub logo" 
+                      loading="lazy" 
+                    />
+                    <img 
+                      src="/github-mark-white.svg" 
+                      className="h-6 opacity-70 hover:opacity-100 mr-2 dark:hidden inline" 
                       alt="GitHub logo" 
                       loading="lazy" 
                     />

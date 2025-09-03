@@ -29,7 +29,7 @@ const Hero = () => {
             Hi! I'm César Alexander
           </motion.h1>
           <motion.p 
-            className="tracking-[0.06em] text-xl text-zinc-200"
+            className="tracking-[0.06em] text-xl text-gray-700 dark:text-zinc-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -37,7 +37,7 @@ const Hero = () => {
             A computer science student, focused on web development and data engineering.
           </motion.p>
           <motion.div 
-            className="md:w-full mt-6 text-xl text-zinc-200"
+            className="md:w-full mt-6 text-xl text-gray-700 dark:text-zinc-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
@@ -58,7 +58,7 @@ const Hero = () => {
           >
             <motion.a 
               href="/contact"
-              className="inline-flex items-center px-6 py-3 bg-transparent border border-white hover:bg-indigo-600 text-white font-medium rounded-lg transition-colors duration-200"
+              className="inline-flex items-center px-6 py-3 bg-transparent border border-gray-900 dark:border-white hover:bg-indigo-600 text-gray-900 dark:text-white font-medium rounded-lg transition-colors duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
