@@ -1,27 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 const profilePhotoSrc = '/photo.webp'; 
 
 const Hero = () => {
-  const fullText = "Hi! I'm César Alexander";
-  const [displayedText, setDisplayedText] = useState('');
-
-  useEffect(() => {
-    let currentIndex = 0;
-    const typingSpeed = 100; // milliseconds per character
-
-    const typingInterval = setInterval(() => {
-      if (currentIndex < fullText.length) {
-        setDisplayedText(fullText.slice(0, currentIndex + 1));
-        currentIndex++;
-      } else {
-        clearInterval(typingInterval);
-      }
-    }, typingSpeed);
-
-    return () => clearInterval(typingInterval);
-  }, []);
 
   const handleSmoothScroll = (e, targetId) => {
     e.preventDefault();
@@ -60,20 +42,27 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {displayedText}
-            <span className="inline-block w-0.5 h-8 sm:h-10 bg-orange-500 ml-1 align-middle animate-blink"></span>
+            Hi! I'm César Alexander
           </motion.h1>
           
+          <motion.p 
+            className="tracking-[0.06em] text-xl text-gray-700 dark:text-zinc-200"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            A computer science student, and software developer, focused on web development and data engineering.
+          </motion.p>
           <motion.div 
             className="md:w-full mt-6 text-xl text-gray-700 dark:text-zinc-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 2.7 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
           >
             <p className="[&>strong]:text-orange-400">
               I am a <strong>Computer Science</strong> student at <span className="text-orange-500 font-bold">UANL</span> and an upcoming Software Engineer, with a strong interest in web development and data engineering.
             </p>
-            <p className="mt-2">
+            <p>
               Currently doing an internship as a Data Engineer @ <span className="text-orange-500 font-bold">Grupo DEACERO</span>.
             </p>
           </motion.div>
@@ -82,7 +71,7 @@ const Hero = () => {
             className="mt-8 flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 3.0 }}
+            transition={{ duration: 0.5, delay: 1.0 }}
           >
             <motion.a 
               href="https://github.com/cesaralexanderds/"
