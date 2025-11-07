@@ -51,7 +51,7 @@ const About = () => {
           but it did import it. If there was an image meant to be here, you'll need to add an <img> tag.
         */}
         <motion.p 
-          className="md:w-3/6 text-xl text-gray-700 dark:text-zinc-200 [&>strong]:text-indigo-500"
+          className="md:w-3/6 text-xl text-gray-700 dark:text-zinc-200 [&>strong]:text-orange-500"
           variants={itemVariants}
           dangerouslySetInnerHTML={{ __html: about.description }}
         >

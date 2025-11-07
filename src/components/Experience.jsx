@@ -72,13 +72,22 @@ const Experience = () => {
                   <span className="text-orange-600 font-medium">{exp.endDate}</span> : 
                   exp.endDate}
               </motion.span>
+              
             </motion.div>
+            
             <motion.p 
               className="text-gray-600 dark:text-zinc-300 leading-relaxed"
               variants={itemVariants}
             >
               {exp.description}
             </motion.p>
+
+            <motion.span 
+                className="text-sm text-gray-600 dark:text-zinc-400 block mt-4"
+                variants={itemVariants}
+              >
+                Technologies: <span className="text-orange-500 font-bold">{exp.technologies.join(", ")}</span>.
+              </motion.span>
           </motion.div>
         ))}
       </motion.div>

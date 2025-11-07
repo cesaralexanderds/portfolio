@@ -1,95 +1,96 @@
 {
-    "skills": [
+    "skillCategories": [
         {
-            "name": "Google Cloud Platform",
-            "svg": "/gcp.svg",
-            "color": "#4285F4"
+            "category": "Data Engineering",
+            "skills": [
+                {
+                    "name": "Google Cloud Platform",
+                    "svg": "/gcp.svg"
+                },
+                {
+                    "name": "Airbyte",
+                    "svg": "/Airbyte.svg"
+                },
+                {
+                    "name": "Python",
+                    "svg": "/python.svg"
+                },
+                {
+                    "name": "SQL Server",
+                    "svg": "/sql-server.svg"
+                },
+                {
+                    "name": "MySQL",
+                    "svg": "/mysql.svg"
+                }
+            ]
         },
         {
-            "name": "Airbyte",
-            "svg": "/Airbyte.svg",
-            "color": "#000000"
+            "category": "Frontend Development",
+            "skills": [
+                {
+                    "name": "HTML",
+                    "svg": "/html5.svg"
+                },
+                {
+                    "name": "CSS",
+                    "svg": "/css.svg"
+                },
+                {
+                    "name": "JavaScript",
+                    "svg": "/javascript.svg"
+                },
+                {
+                    "name": "TypeScript",
+                    "svg": "/typescript.svg"
+                },
+                {
+                    "name": "React",
+                    "svg": "/react.svg"
+                },
+                {
+                    "name": "Angular",
+                    "svg": "/angular.svg"
+                },
+                {
+                    "name": "Tailwind CSS",
+                    "svg": "/tailwindcss.svg"
+                },
+                {
+                    "name": "Astro",
+                    "svg": "/astro_dark.svg"
+                },
+                {
+                    "name": "Ionic",
+                    "svg": "/ionic-dark.svg"
+                }
+            ]
         },
         {
-            "name": "HTML",
-            "svg": "/html5.svg",
-            "color": "#e34c26"
+            "category": "Backend Development",
+            "skills": [
+                {
+                    "name": "C#",
+                    "svg": "/csharp.svg"
+                },
+                {
+                    "name": ".NET",
+                    "svg": "/dotnet.svg"
+                },
+                {
+                    "name": "Firebase",
+                    "svg": "/firebase.svg"
+                }
+            ]
         },
         {
-            "name": "CSS",
-            "svg": "/css.svg",
-            "color": "#1b75b8"
-        },
-        {
-            "name": "JavaScript",
-            "svg": "/javascript.svg",
-            "color": "#f9dc43"
-        },
-        {
-            "name": "Python",
-            "svg": "/python.svg",
-            "color": "#3d74a1"
-        },
-        {
-            "name": "Git",
-            "svg": "/git.svg",
-            "color": "#ef5032"
-        },
-        {
-            "name": "Tailwind CSS",
-            "svg": "/tailwindcss.svg",
-            "color": "#1dc0cd"
-        },
-        {
-            "name": "Angular",
-            "svg": "/angular.svg",
-            "color": "#c50836"
-        },
-        {
-            "name": "C#",
-            "svg": "/csharp.svg",
-            "color": "#74089a"
-        },
-        {
-            "name": "Firebase",
-            "svg": "/firebase.svg",
-            "color": "#f58614"
-        },        
-        {
-            "name": ".NET",
-            "svg": "/dotnet.svg",
-            "color": "#5632d5"
-        },
-        {
-            "name": "SQL Server",
-            "svg": "/sql-server.svg",
-            "color": "#a7a8aa"
-        },
-        {
-            "name": "Ionic",
-            "svg": "/ionic-dark.svg",
-            "color": "#508fff"
-        },
-        {
-            "name": "TypeScript",
-            "svg": "/typescript.svg",
-            "color": "#61dbfb"
-        },
-        {
-            "name": "MySQL",
-            "svg": "/mysql.svg",
-            "color": "#41b883"
-        },
-        {
-            "name": "Astro",
-            "svg": "/astro_dark.svg",
-            "color": "#41b883"
-        },
-        {
-            "name": "React",
-            "svg": "/react.svg",
-            "color": "#61dbfb"
+            "category": "Tools",
+            "skills": [
+                {
+                    "name": "Git",
+                    "svg": "/git.svg"
+                }
+            ]
         }
-        
     ]
 }

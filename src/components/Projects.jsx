@@ -69,33 +69,52 @@ const Projects = () => {
                   </motion.span>
                 ))}
               </div>
-              <p className="text-gray-600 dark:text-zinc-300 leading-relaxed mt-4 flex-grow">{project.description}</p>
-              {project.githubUrl && (
-                <div className="pt-6 mt-auto">
+              <p className="text-gray-700 dark:text-zinc-300 leading-relaxed mt-4 flex-grow">{project.description}</p>
+              <div className="pt-6 mt-auto flex flex-wrap gap-3">
+                {project.liveUrl && project.liveUrl.trim() !== '' && (
                   <motion.a 
-                    href={project.githubUrl} 
-                    className="inline-flex items-center text-gray-600 dark:text-zinc-400 hover:text-gray-900 dark:hover:text-white transition-colors" 
+                    href={project.liveUrl} 
+                    className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 text-sm font-medium" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    whileHover={{ x: 5 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                    View Live Project
+                  </motion.a>
+                )}
+                {project.githubUrl && project.githubUrl.trim() !== '' ? (
+                  <motion.a 
+                    href={project.githubUrl} 
+                    className="inline-flex items-center px-4 py-2 bg-transparent border border-gray-300 dark:border-zinc-600 hover:bg-gray-100 dark:hover:bg-zinc-700 text-gray-700 dark:text-zinc-300 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 text-sm font-medium" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     <img 
                       src="/github-mark-white.svg" 
-                      className="h-6 opacity-70 hover:opacity-100 mr-2 dark:inline hidden filter invert" 
+                      className="h-4 w-4 mr-2 dark:inline hidden" 
                       alt="GitHub logo" 
                       loading="lazy" 
+                      aria-hidden="true"
                     />
                     <img 
                       src="/github-mark-white.svg" 
-                      className="h-6 opacity-70 hover:opacity-100 mr-2 dark:hidden inline" 
+                      className="h-4 w-4 mr-2 dark:hidden inline filter invert" 
                       alt="GitHub logo" 
                       loading="lazy" 
+                      aria-hidden="true"
                     />
-                    <span className="text-sm">View Code</span>
+                    View Code
                   </motion.a>
-                </div>
-              )}
+                ) : (
+                  <span className="text-sm text-gray-500 dark:text-zinc-500 italic flex items-center">Code repository not available</span>
+                )}
+              </div>
             </div>
           </motion.article>
         ))}

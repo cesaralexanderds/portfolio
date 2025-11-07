@@ -3,8 +3,8 @@
       {
         "jobTitle": "Data Engineer Intern",
         "company": "Grupo DEACERO",
-        "description": "Implemented a system to track and update information about on-prem servers on Google Cloud Platform. Created and maintained data pipelines for data ingestion and processing. Used ETL plaforms such as Airbyte and Dataplex to manage data flow and storage.",
-        "technologies": ["Python", "MSSQL", "Google Cloud Platform", "BigQuery", "Dataplex", "Airbyte", "ETLs"],
+        "description": "Implemented a system to track and update metadata about on-prem servers on Google Cloud Platform. Created solutions for data replication mainly via Airbyte and Datastream to replicate data from on-prem servers and multiple other sources to Google Cloud Platform.",
+        "technologies": ["Python", "MSSQL", "GCP", "BigQuery", "Dataplex" , "Datastream", "Airbyte"],
         "startDate": "March 2025",
         "endDate": "Present",
         "location": "Monterrey, Nuevo León, México"

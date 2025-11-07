@@ -23,7 +23,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
 
     
@@ -60,17 +60,41 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <title>{title}</title>
 
+    <!-- Prevent flash of light mode -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'dark';
+        if (theme === 'dark') {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
 
   </head>
-	<body>
+	<body class="bg-zinc-50 dark:bg-zinc-950">
+		<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-orange-600 focus:text-white focus:rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2">
+			Skip to main content
+		</a>
 		<div class="relative min-h-screen w-full">
-			<div class="absolute inset-0 bg-gradient-to-tl from-primary from-10% via-zinc-950 via-50% to-neutral-950 to-80% dark:from-primary dark:from-10% dark:via-zinc-950 dark:via-50% dark:to-neutral-950 dark:to-80% from-slate-50 via-white to-gray-100">
+			{/* Clean solid background for light mode */}
+			<div class="fixed inset-0 -z-10 dark:hidden pointer-events-none">
+				<div class="absolute inset-0 bg-zinc-50"></div>
+				<div class="absolute inset-0 bg-grid-pattern opacity-[0.03]"></div>
 			</div>
-				<div class="relative">
-          <Header client:visible />
-          <slot />
-          <Footer client:visible />
-				</div>
+
+			{/* Clean solid background for dark mode */}
+			<div class="fixed inset-0 -z-10 hidden dark:block pointer-events-none">
+				<div class="absolute inset-0 bg-zinc-950"></div>
+				<div class="absolute inset-0 bg-grid-pattern opacity-[0.02]"></div>
+			</div>
+
+			<div class="relative">
+				<Header client:visible />
+				<slot />
+				<Footer client:visible />
+			</div>
 		</div>
 	</body>
 </html>
@@ -95,5 +119,30 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 			monospace;
 	}
 
+	/* Subtle grid pattern for background */
+	.bg-grid-pattern {
+		background-image: 
+			linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+		background-size: 32px 32px;
+	}
 
+	.dark .bg-grid-pattern {
+		background-image: 
+			linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+			linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	}
+
+	@keyframes blink {
+		0%, 50% {
+			opacity: 1;
+		}
+		51%, 100% {
+			opacity: 0;
+		}
+	}
+
+	.animate-blink {
+		animation: blink 1s infinite;
+	}
 </style>
