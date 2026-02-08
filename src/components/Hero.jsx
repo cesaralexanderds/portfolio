@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const profilePhotoSrc = '/photo.webp'; 
+const profilePhotoSrc = '/photo.webp';
 
 const Hero = () => {
 
@@ -24,19 +24,19 @@ const Hero = () => {
     <section className="pt-24 pb-16 md:pt-32 md:pb-36 section scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl" id="home">
       <div className="flex flex-col md:flex-row items-center md:justify-between">
         <div>
-          <motion.img 
-            src={profilePhotoSrc} 
+          <motion.img
+            src={profilePhotoSrc}
             height={240}
             width={240}
-            className="mb-10 mt-10 md:mt-0 rounded-full md:mx-0" 
-            alt="César Alexander's profile photo" 
+            className="mb-10 mt-10 md:mt-0 rounded-full md:mx-0"
+            alt="César Alexander's profile photo"
             loading="eager"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           />
-          <motion.h1 
-            className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white" 
+          <motion.h1
+            className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
             id="home"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -44,8 +44,8 @@ const Hero = () => {
           >
             Hi! I'm César Alexander
           </motion.h1>
-          
-          <motion.p 
+
+          <motion.p
             className="tracking-[0.06em] text-xl text-gray-700 dark:text-zinc-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -53,7 +53,7 @@ const Hero = () => {
           >
             A computer science student, and software developer, focused on web development and data engineering.
           </motion.p>
-          <motion.div 
+          <motion.div
             className="md:w-full mt-6 text-xl text-gray-700 dark:text-zinc-200"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,14 +66,14 @@ const Hero = () => {
               Currently doing an internship as a Data Engineer @ <span className="text-orange-500 font-bold">Grupo DEACERO</span>.
             </p>
           </motion.div>
-         
-          <motion.div 
+
+          <motion.div
             className="mt-8 flex flex-col sm:flex-row gap-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 1.0 }}
           >
-            <motion.a 
+            <motion.a
               href="https://github.com/cesaralexanderds/"
               target="_blank"
               rel="noopener noreferrer"
@@ -88,22 +88,37 @@ const Hero = () => {
               GitHub
             </motion.a>
 
-            <motion.a 
+            <motion.a
               href="https://www.linkedin.com/in/c-a-d-s/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors duration-200"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#0077b5] hover:bg-[#005e93] text-white font-medium rounded-lg transition-colors duration-200"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               aria-label="LinkedIn"
             >
               <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
               </svg>
               LinkedIn
             </motion.a>
 
-            <motion.a 
+            <motion.a
+              href="/Cesar_Delgadillo_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors duration-200"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label="Resume"
+            >
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" clipRule="evenodd" d="M3 24h19v-23h-1v22h-18v1zm17-24h-18v22h18v-22zm-1 1h-16v20h16v-20zm-2 16h-12v1h12v-1zm0-3h-12v1h12v-1zm0-3h-12v1h12v-1zm-7.348-3.863l.948.3c-.145.529-.387.922-.725 1.178-.338.257-.767.385-1.287.385-.643 0-1.171-.22-1.585-.659-.414-.439-.621-1.04-.621-1.802 0-.806.208-1.432.624-1.878.416-.446.963-.669 1.642-.669.592 0 1.073.175 1.443.525.221.207.386.505.496.892l-.968.231c-.057-.251-.177-.449-.358-.594-.182-.146-.403-.218-.663-.218-.359 0-.65.129-.874.386-.223.258-.335.675-.335 1.252 0 .613.11 1.049.331 1.308.22.26.506.39.858.39.26 0 .484-.082.671-.248.187-.165.322-.425.403-.779zm3.023 1.78l-1.731-4.842h1.06l1.226 3.584 1.186-3.584h1.037l-1.734 4.842h-1.044z" />
+              </svg>
+              Resume
+            </motion.a>
+
+            <motion.a
               href="mailto:cesaralexanderds@gmail.com"
               className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-gray-900 dark:border-white hover:bg-orange-600 hover:border-orange-600 dark:hover:bg-orange-600 dark:hover:border-orange-600 hover:text-white text-gray-900 dark:text-white font-medium rounded-lg transition-colors duration-200"
               whileHover={{ scale: 1.05 }}

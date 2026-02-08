@@ -1,13 +1,23 @@
 {
-    "experience": [
-      {
-        "jobTitle": "Data Engineer Intern",
-        "company": "Grupo DEACERO",
-        "description": "Implemented a system to track and update metadata about on-prem servers on Google Cloud Platform. Created solutions for data replication mainly via Airbyte and Datastream to replicate data from on-prem servers and multiple other sources to Google Cloud Platform.",
-        "technologies": ["Python", "MSSQL", "GCP", "BigQuery", "Dataplex" , "Datastream", "Airbyte"],
-        "startDate": "March 2025",
-        "endDate": "Present",
-        "location": "Monterrey, Nuevo León, México"
-      }
-    ]
-  }
+  "experience": [
+    {
+      "jobTitle": "Data Engineer Intern",
+      "company": "Grupo DEACERO",
+      "description": "Led the migration of ETL workflows from SQL Server to Google BigQuery, refactoring legacy T-SQL and Excel logic to optimize compute resources and engineering a Python-based automated QA framework. Designed and implemented a Salesforce-to-BigQuery replication architecture using Google Datastream. Refactored a multi-source replication module (SQL Server, Salesforce) improving maintainability. Operated and monitored SQL Server replication pipelines ensuring reliable CDC-based sync.",
+      "technologies": [
+        "Python",
+        "SQL",
+        "T-SQL",
+        "GCP",
+        "BigQuery",
+        "Datastream",
+        "Airbyte",
+        "Salesforce",
+        "CDC"
+      ],
+      "startDate": "March 2025",
+      "endDate": "Present",
+      "location": "Monterrey, Nuevo León, México"
+    }
+  ]
+}

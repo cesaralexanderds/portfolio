@@ -1,25 +1,63 @@
 {
-    "projects": [
-      {
-        "title": "Backend Certification Project",
-        "description": "Developed a banking application requiring user authentication to access the API. Authentication handled via JWT Tokens.",
-        "technologies": ["C#", ".NET"],
-        "githubUrl": "https://github.com/cesaralexanderds/dotnetcourse",
-        "liveUrl": ""
-      },
-      {
-        "title": "Instagram Clone",
-        "description": "Developed a fully functional Instagram clone; frontend built using Angular and Ionic.",
-        "technologies": ["Angular", "Ionic", "Firebase"],
-        "githubUrl": "",
-        "liveUrl": ""
-      },
-      {
-        "title": "Event management app",
-        "description": "Designed and built a CRUD application for event creation and management.",
-        "technologies": ["C#", ".NET", "SQL Server", "Angular"],
-        "githubUrl": "",
-        "liveUrl": ""
-      }
-    ]
-  }
+  "projects": [
+    {
+      "title": "Secure Distributed Banking Ledger",
+      "description": "Architected a secure RESTful API for financial transaction processing, implementing JWT Authentication to safeguard user data and prevent unauthorized access.",
+      "technologies": [
+        "C#",
+        ".NET",
+        "MySQL"
+      ],
+      "githubUrl": "https://github.com/cesaralexanderds/dotnetcourse",
+      "liveUrl": ""
+    },
+    {
+      "title": "Real-Time Social Content Platform",
+      "description": "Developed a high-performance mobile-first application using Angular and Ionic, replicating complex social graph interactions and feed algorithms. Integrated Firebase for real-time synchronization.",
+      "technologies": [
+        "Angular",
+        "Ionic",
+        "Firebase",
+        "TypeScript"
+      ],
+      "githubUrl": "",
+      "liveUrl": ""
+    },
+    {
+      "title": "PSell Kitchen Dashboard",
+      "description": "Designed a real-time, bidirectional sync architecture using Supabase Realtime and PowerSync. Built a Kanban-style kitchen operations dashboard with automated visual/audio alerts and time-based status tracking to improve throughput.",
+      "technologies": [
+        "Supabase Realtime",
+        "PowerSync"
+      ],
+      "githubUrl": "",
+      "liveUrl": ""
+    },
+    {
+      "title": "Enterprise Event Management System",
+      "description": "Led backend development designing normalized SQL Server database schemas to manage complex event data. Built and deployed CRUD API endpoints on Azure facilitating seamless event creation.",
+      "technologies": [
+        "C#",
+        ".NET",
+        "SQL Server",
+        "Azure"
+      ],
+      "githubUrl": "",
+      "liveUrl": ""
+    },
+    {
+      "title": "VLRCards",
+      "description": "FIFA-style rating system and player database for VALORANT using VCT data from vlr.gg. Features a Python ETL pipeline with scraping, SQLite database, FastAPI backend, and a modern Next.js frontend.",
+      "technologies": [
+        "Python",
+        "Next.js",
+        "FastAPI",
+        "TailwindCSS",
+        "SQLite",
+        "BeautifulSoup"
+      ],
+      "githubUrl": "",
+      "liveUrl": "https://vlrcards.com"
+    }
+  ]
+}

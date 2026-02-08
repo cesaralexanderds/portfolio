@@ -5,23 +5,28 @@
             "skills": [
                 {
                     "name": "Google Cloud Platform",
-                    "svg": "/gcp.svg"
+                    "svg": "/gcp.svg",
+                    "url": "https://cloud.google.com/"
                 },
                 {
                     "name": "Airbyte",
-                    "svg": "/Airbyte.svg"
+                    "svg": "/Airbyte.svg",
+                    "url": "https://airbyte.com/"
                 },
                 {
                     "name": "Python",
-                    "svg": "/python.svg"
+                    "svg": "/python.svg",
+                    "url": "https://www.python.org/"
                 },
                 {
                     "name": "SQL Server",
-                    "svg": "/sql-server.svg"
+                    "svg": "/sql-server.svg",
+                    "url": "https://www.microsoft.com/en-us/sql-server"
                 },
                 {
                     "name": "MySQL",
-                    "svg": "/mysql.svg"
+                    "svg": "/mysql.svg",
+                    "url": "https://www.mysql.com/"
                 }
             ]
         },
@@ -30,39 +35,48 @@
             "skills": [
                 {
                     "name": "HTML",
-                    "svg": "/html5.svg"
+                    "svg": "/html5.svg",
+                    "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
                 },
                 {
                     "name": "CSS",
-                    "svg": "/css.svg"
+                    "svg": "/css.svg",
+                    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
                 },
                 {
                     "name": "JavaScript",
-                    "svg": "/javascript.svg"
+                    "svg": "/javascript.svg",
+                    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
                 },
                 {
                     "name": "TypeScript",
-                    "svg": "/typescript.svg"
+                    "svg": "/typescript.svg",
+                    "url": "https://www.typescriptlang.org/"
                 },
                 {
                     "name": "React",
-                    "svg": "/react.svg"
+                    "svg": "/react.svg",
+                    "url": "https://react.dev/"
                 },
                 {
                     "name": "Angular",
-                    "svg": "/angular.svg"
+                    "svg": "/angular.svg",
+                    "url": "https://angular.io/"
                 },
                 {
                     "name": "Tailwind CSS",
-                    "svg": "/tailwindcss.svg"
+                    "svg": "/tailwindcss.svg",
+                    "url": "https://tailwindcss.com/"
                 },
                 {
                     "name": "Astro",
-                    "svg": "/astro_dark.svg"
+                    "svg": "/astro_dark.svg",
+                    "url": "https://astro.build/"
                 },
                 {
                     "name": "Ionic",
-                    "svg": "/ionic-dark.svg"
+                    "svg": "/ionic-dark.svg",
+                    "url": "https://ionicframework.com/"
                 }
             ]
         },
@@ -71,15 +85,18 @@
             "skills": [
                 {
                     "name": "C#",
-                    "svg": "/csharp.svg"
+                    "svg": "/csharp.svg",
+                    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/"
                 },
                 {
                     "name": ".NET",
-                    "svg": "/dotnet.svg"
+                    "svg": "/dotnet.svg",
+                    "url": "https://dotnet.microsoft.com/"
                 },
                 {
                     "name": "Firebase",
-                    "svg": "/firebase.svg"
+                    "svg": "/firebase.svg",
+                    "url": "https://firebase.google.com/"
                 }
             ]
         },
@@ -88,7 +105,13 @@
             "skills": [
                 {
                     "name": "Git",
-                    "svg": "/git.svg"
+                    "svg": "/git.svg",
+                    "url": "https://git-scm.com/"
+                },
+                {
+                    "name": "GitHub",
+                    "svg": "/github-mark-white.svg",
+                    "url": "https://github.com/"
                 }
             ]
         }

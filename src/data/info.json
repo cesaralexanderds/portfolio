@@ -1,12 +1,41 @@
 {
-    "about": 
-      {
-        "name": "César Alexander Delgadillo Sánchez",
-        "title": "Software Developer",
-        "description": ["Motivated Computer Science student with a solid foundation in software development, databases, and data science. Committed to continuous learning, with certifications in advanced web development and data science. Seeking to leverage my skills in challenging environments to create impactful technological solutions."],
-        "linkedin": "www.linkedin.com/in/c-a-d-s",
-        "education": " Currently pursuing a Bachelor's degree in Computer Science at the Universidad Autónoma de Nuevo León.",
-        "skillSet": ["C#", ".NET", "SQL Server", "Angular", "Firebase", "Ionic", "HTML", "CSS", "JavaScript", "Python", "Git"]
-      }
-    
+  "about": {
+    "name": "César Alexander Delgadillo Sánchez",
+    "title": "Software & Data Engineer",
+    "description": [
+      "Computer Science student with professional experience in Data Engineering and Cloud Architecture. Proven track record of optimizing data pipelines and metadata governance at Grupo DEACERO. Proficient in building scalable applications using Google Cloud Platform, Python, and SQL. Passionate about automating data workflows and developing systems."
+    ],
+    "linkedin": "www.linkedin.com/in/c-a-d-s",
+    "education": "Bachelor of Science in Computer Science at Universidad Autónoma de Nuevo León (UANL) - FCFM. Exp. Grad. June 2026. Certifications: Advanced Web Development Applications (US-IT), Basic Data Science (Google).",
+    "skillSet": [
+      "C",
+      "C#",
+      "Python",
+      "SQL",
+      "TypeScript",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Google Cloud Platform",
+      "Airbyte",
+      "Datastream",
+      "Salesforce",
+      "Supabase",
+      "PowerSync",
+      "RESTful Architecture",
+      "JWT Authentication",
+      "Microservices",
+      ".NET Core",
+      "Angular",
+      "Ionic",
+      "TailwindCSS",
+      "Astro",
+      "React",
+      "Git",
+      "GitHub",
+      "Postman",
+      "Firebase",
+      "SQL Server"
+    ]
+  }
 }

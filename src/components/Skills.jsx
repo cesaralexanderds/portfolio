@@ -28,7 +28,7 @@ const Skills = () => {
 
   return (
     <section className="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
-      <motion.h2 
+      <motion.h2
         className="text-3xl font-semibold mb-10 text-gray-900 dark:text-white"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -36,9 +36,9 @@ const Skills = () => {
       >
         Skills & Expertise
       </motion.h2>
-      
+
       {/* Bento Grid Layout */}
-      <motion.div 
+      <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto"
         variants={containerVariants}
         initial="hidden"
@@ -49,13 +49,13 @@ const Skills = () => {
           <motion.div
             key={category.category}
             variants={cardVariants}
-            whileHover={{ 
-              scale: 1.02,
-              transition: { type: "spring", stiffness: 400, damping: 10 }
+            whileHover={{
+              y: -3,
+              transition: { duration: 0.2, ease: "easeOut" }
             }}
             className={`
-              bg-white/90 dark:bg-zinc-800/50 rounded-2xl p-6 border border-gray-200 dark:border-zinc-700/50 
-              hover:border-orange-300 dark:hover:border-orange-500/50 hover:shadow-lg transition-all
+              bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-zinc-800 
+              hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10 transition-all
               ${category.category === 'Frontend Development' ? 'md:col-span-2 lg:col-span-2' : ''}
               ${category.category === 'Data Engineering' ? 'lg:row-span-2' : ''}
             `}
@@ -84,17 +84,19 @@ const Skills = () => {
               )}
               {category.category}
             </h3>
-            
-            <div className={`grid gap-4 ${
-              category.category === 'Frontend Development' 
-                ? 'grid-cols-3 sm:grid-cols-4 md:grid-cols-5' 
-                : category.category === 'Data Engineering'
+
+            <div className={`grid gap-4 ${category.category === 'Frontend Development'
+              ? 'grid-cols-3 sm:grid-cols-4 md:grid-cols-5'
+              : category.category === 'Data Engineering'
                 ? 'grid-cols-2'
                 : 'grid-cols-3'
-            }`}>
+              }`}>
               {category.skills.map((skill) => (
-                <motion.div
+                <motion.a
                   key={skill.name}
+                  href={skill.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex flex-col items-center justify-center group cursor-pointer"
                   whileHover={{ scale: 1.1 }}
                   transition={{ type: "spring", stiffness: 400, damping: 10 }}
@@ -103,18 +105,17 @@ const Skills = () => {
                     <img
                       src={skill.svg}
                       alt={`${skill.name} icon`}
-                      className={`w-10 h-10 md:w-12 md:h-12 object-contain ${
-                        skill.name === 'Astro' 
-                          ? 'dark:drop-shadow-none drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]' 
-                          : ''
-                      }`}
+                      className={`w-10 h-10 md:w-12 md:h-12 object-contain ${skill.name === 'Astro'
+                        ? 'dark:drop-shadow-none drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]'
+                        : ''
+                        }`}
                       loading="lazy"
                     />
                   </div>
                   <span className="text-xs text-center text-gray-700 dark:text-zinc-300 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all font-medium opacity-0 group-hover:opacity-100 duration-200">
                     {skill.name}
                   </span>
-                </motion.div>
+                </motion.a>
               ))}
             </div>
           </motion.div>
