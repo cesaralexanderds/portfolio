@@ -44,7 +44,7 @@ const Experience = () => {
         whileInView="visible"
         viewport={{ once: true, margin: "-100px" }}
       >
-        {experience.map((exp, index) => (
+        {[...experience].reverse().map((exp, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
