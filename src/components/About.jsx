@@ -82,7 +82,7 @@ const About = () => {
             className="mt-3 flex flex-row justify-start text-gray-700 dark:text-zinc-200"
             variants={itemVariants}
           >
-            <p className="text-lg">Expected Graduation in June, 2026</p>
+            
           </motion.div>
         </motion.div>
       </motion.div>
