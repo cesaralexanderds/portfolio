@@ -51,7 +51,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
           >
-            A computer science student, and software developer, focused on web development and data engineering.
+            A computer science graduate, and software developer, focused on web development and data engineering.
           </motion.p>
           <motion.div
             className="md:w-full mt-6 text-xl text-gray-700 dark:text-zinc-200"
@@ -60,10 +60,10 @@ const Hero = () => {
             transition={{ duration: 0.5, delay: 0.6 }}
           >
             <p className="[&>strong]:text-orange-400">
-              I am a <strong>Computer Science</strong> student at <span className="text-orange-500 font-bold">UANL</span> and an upcoming Software Engineer, with a strong interest in web development and data engineering.
+              I am a <strong>Computer Science</strong> graduate at <span className="text-orange-500 font-bold">UANL</span> and a Software Engineer, with a strong interest in web development and data engineering.
             </p>
             <p>
-              Currently doing an internship as a Data Engineer @ <span className="text-orange-500 font-bold">Grupo DEACERO</span>.
+              Currently working as a Developer Analyst at <span className="text-orange-500 font-bold">Grupo DEACERO</span>.
             </p>
           </motion.div>
 

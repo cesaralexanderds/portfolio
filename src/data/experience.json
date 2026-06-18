@@ -16,7 +16,22 @@
         "CDC"
       ],
       "startDate": "March 2025",
-      "endDate": "Present",
+      "endDate": "June 2026",
+      "location": "Monterrey, Nuevo León, México"
+    },
+    {
+      "jobTitle": "Developer Analyst",
+      "company": "Grupo DEACERO",
+      "description": "Solving SQL issues on the manufacture area, helping different teams with errors analysis and solving through finding the root cause.",
+      "technologies": [
+        "SQL",
+        "GCP",
+        "SQL Server",
+        "Python",
+        "Jira"
+      ],
+      "startDate": "June 2026",
+      "endDate": "",
       "location": "Monterrey, Nuevo León, México"
     }
   ]
