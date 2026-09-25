@@ -1,93 +1,67 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import infoData from '../data/info.json'; // Assuming info.json is in src/data
+import infoData from '../data/info.json';
+import { Sparkle } from './Decor.jsx';
 
 const { about } = infoData;
 
-const About = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const About = () => (
+  <section id="about" aria-labelledby="about-title" className="page-gutter section-space relative">
+    <h2
+      id="about-title"
+      className="liquid-html m-0 mb-8 font-display font-extrabold leading-none tracking-[-0.05em] text-accent-ink md:mb-12"
+      style={{ fontSize: 'clamp(3rem, 11.7vw, 10.5rem)' }}
+    >
+      About me
+    </h2>
+    <Sparkle size={56} delay={-0.9} className="absolute right-6 top-[180px] hidden text-tint-2 md:block lg:right-24" />
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
-
-  return (
-    <section id="about" className="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
-      <motion.h2 
-        className="text-3xl font-semibold mb-8 text-gray-900 dark:text-white"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+    <div className="grid gap-12 lg:grid-cols-12 lg:gap-6">
+      <p
+        className="m-0 font-medium leading-[1.3] tracking-[-0.02em] lg:col-span-8"
+        style={{ fontSize: 'clamp(1.375rem, 2.6vw, 2.25rem)' }}
       >
-        About me
-      </motion.h2>
-      <motion.div 
-        className="flex flex-wrap md:w-full items-center md:justify-between mb-8"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {/* 
-          Astro's <Image /> component specific features (like optimization) are not directly transferable.
-          If you were using specific props for optimization or format, you might need a React-specific image solution
-          or adjust the <img> tag accordingly. For now, I'm assuming a simple image display if one was present.
-          The original About.astro did not seem to use an <Image /> component directly in its template,
-          but it did import it. If there was an image meant to be here, you'll need to add an <img> tag.
-        */}
-        <motion.p 
-          className="md:w-3/6 text-xl text-gray-700 dark:text-zinc-200 [&>strong]:text-orange-500"
-          variants={itemVariants}
-          dangerouslySetInnerHTML={{ __html: about.description }}
-        >
-            {/* The original Astro component directly rendered HTML from about.description.
-                In React, to render HTML strings, you use dangerouslySetInnerHTML.
-                Ensure that the content of about.description is trusted.
-                If it can contain user-generated content, this could be an XSS risk.
-                If about.description is just text with some <strong> tags you control, it's fine.
-            */}
-        </motion.p>
-        <motion.div 
-          className="mt-8 md:mt-0 flex flex-col gap-2 text-gray-900 dark:text-white max-w-md md:w-3/6 dark:bg-opacity-25"
-          variants={itemVariants}
-        >
-          <motion.h3 
-            className="text-2xl font-medium text-gray-700 dark:text-zinc-200"
-            variants={itemVariants}
-          >
-            Education
-          </motion.h3>
-          <motion.div 
-            className="text-xl text-gray-700 dark:text-zinc-200"
-            variants={itemVariants}
-          >
-            {about.education}
-          </motion.div>
-          <motion.div 
-            className="mt-3 flex flex-row justify-start text-gray-700 dark:text-zinc-200"
-            variants={itemVariants}
-          >
-            
-          </motion.div>
-        </motion.div>
-      </motion.div>
-    </section>
-  );
-};
+        {about.statement ?? about.description[0]}
+      </p>
 
-export default About; 
+      <div className="relative self-start md:rotate-[1.6deg] lg:col-span-4">
+        <dl className="m-0 flex flex-col gap-2.5 rounded-card bg-card p-7 shadow-[0_1px_0_var(--line),0_22px_44px_-28px_var(--shadow)] md:p-8">
+          <dt className="mono-label text-accent-ink">Education</dt>
+          <dd className="m-0 mb-4 text-[17px] leading-[1.55]">
+            {about.education.map((item) => (
+              <span key={item.degree} className="block">
+                {item.degree}, {item.school}
+              </span>
+            ))}
+          </dd>
+          <dt className="mono-label border-t-2 border-dashed border-line pt-4 text-accent-ink">Certifications</dt>
+          <dd className="m-0 mb-4 text-[17px] leading-[1.55]">
+            {about.certifications.map((cert) => (
+              <span key={cert.name} className="block">
+                {cert.name}, {cert.issuer}
+              </span>
+            ))}
+          </dd>
+          {about.activities?.length > 0 && (
+            <>
+              <dt className="mono-label border-t-2 border-dashed border-line pt-4 text-accent-ink">Activities</dt>
+              <dd className="m-0 text-[17px] leading-[1.55]">
+                {about.activities.map((activity) => (
+                  <span key={activity} className="block">
+                    {activity}
+                  </span>
+                ))}
+              </dd>
+            </>
+          )}
+        </dl>
+        {/* Tape strip */}
+        <div
+          aria-hidden="true"
+          className="absolute left-1/2 top-[-14px] -ml-[55px] h-7 w-[110px] rotate-[-4deg] bg-[rgba(159,180,245,0.7)]"
+        />
+      </div>
+    </div>
+  </section>
+);
+
+export default About;

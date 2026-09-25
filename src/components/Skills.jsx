@@ -1,128 +1,143 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import skillsData from '../data/skills.json';
+import { Barcode, RegMark, Sparkle } from './Decor.jsx';
 
 const { skillCategories } = skillsData;
+const totalSkills = skillCategories.reduce((sum, group) => sum + group.skills.length, 0);
 
+const pad = (n) => String(n).padStart(2, '0');
+
+// Festival-flyer hierarchy: the first rows are the headliners and set the largest type.
+const TIER_SIZES = [
+  'clamp(1.0625rem, 3.2vw, 2.625rem)',
+  'clamp(1rem, 2.7vw, 2.125rem)',
+  'clamp(1rem, 2.1vw, 1.625rem)',
+  'clamp(1rem, 2.1vw, 1.625rem)',
+  'clamp(0.9375rem, 1.7vw, 1.375rem)',
+];
+const tierSize = (i) => TIER_SIZES[Math.min(i, TIER_SIZES.length - 1)];
+
+// Every item carries a leading sparkle; the list is pulled left by one separator width and
+// clipped, so a sparkle only shows between items, never at the start of a wrapped line.
+// Sticker tilts cycle so neighbouring highlights never lean the same way.
+const TILTS = ['-2.5deg', '1.8deg', '-1.2deg', '2.6deg'];
+
+const SeparatorStar = () => (
+  <svg className="lineup-sep" aria-hidden="true" focusable="false" viewBox="-20 -20 40 40">
+    <path d="M0-20C1.5-5 5-1.5 20 0C5 1.5 1.5 5 0 20C-1.5 5-5 1.5-20 0C-5-1.5-1.5-5 0-20Z" fill="currentColor" />
+  </svg>
+);
+
+// Sparkle that bursts out of a skill on hover/focus.
+const BurstStar = () => (
+  <svg className="skill-burst" aria-hidden="true" focusable="false" viewBox="-20 -20 40 40">
+    <path d="M0-20C1.5-5 5-1.5 20 0C5 1.5 1.5 5 0 20C-1.5 5-5 1.5-20 0C-5-1.5-1.5-5 0-20Z" fill="currentColor" />
+  </svg>
+);
+
+const ArrowIcon = () => (
+  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+    <path d="M7 17 17 7M8 7h9v9" />
+  </svg>
+);
+
+/**
+ * Skills as a static Y2K "lineup" poster: every skill visible at once, grouped by CV category.
+ * Highlighted skills are chrome stickers with a gentle float and holo sweep; everything else is
+ * headliner-style display type separated by sparkles. Each skill links to an official or neutral
+ * reference page; hover/focus peels it like a sticker and flips the row's stamp into a luggage tag
+ * with the skill's blurb (CSS only, see `.skill-link` in global.css).
+ */
 const Skills = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5
-      }
-    }
-  };
+  let stickerCount = 0;
 
   return (
-    <section className="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
-      <motion.h2
-        className="text-3xl font-semibold mb-10 text-gray-900 dark:text-white"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Skills & Expertise
-      </motion.h2>
+    <section id="skills" aria-labelledby="skills-title" className="page-gutter section-space">
+      <div className="flex flex-wrap items-end justify-between gap-4">
+        <h2 id="skills-title" className="section-title">
+          Skills
+        </h2>
+        <p className="m-0 font-mono text-[13px] font-bold uppercase tracking-[0.08em] text-muted">
+          {pad(skillCategories.length)} categories / {pad(totalSkills)} skills
+        </p>
+      </div>
 
-      {/* Bento Grid Layout */}
-      <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {skillCategories.map((category, categoryIndex) => (
-          <motion.div
-            key={category.category}
-            variants={cardVariants}
-            whileHover={{
-              y: -3,
-              transition: { duration: 0.2, ease: "easeOut" }
-            }}
-            className={`
-              bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md rounded-2xl p-6 border border-gray-200 dark:border-zinc-800 
-              hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10 transition-all
-              ${category.category === 'Frontend Development' ? 'md:col-span-2 lg:col-span-2' : ''}
-              ${category.category === 'Data Engineering' ? 'lg:row-span-2' : ''}
-            `}
-          >
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-              {category.category === 'Data Engineering' && (
-                <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
-                </svg>
-              )}
-              {category.category === 'Frontend Development' && (
-                <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              )}
-              {category.category === 'Backend Development' && (
-                <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
-                </svg>
-              )}
-              {category.category === 'Tools' && (
-                <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              )}
-              {category.category}
-            </h3>
+      <div className="lineup mt-12 px-5 pb-8 pt-10 md:mt-14 md:px-12 md:pb-12 md:pt-14 lg:px-16">
+        <RegMark className="absolute left-3.5 top-3.5 text-white" />
+        <RegMark className="absolute right-3.5 top-3.5 text-white" />
+        <RegMark className="absolute bottom-3.5 left-3.5 text-white" />
+        <RegMark className="absolute bottom-3.5 right-3.5 text-white" />
+        <Sparkle size={40} className="absolute right-[6%] top-[5%] hidden text-white md:block" />
+        <Sparkle size={26} delay={-1.4} className="absolute bottom-[8%] right-[18%] hidden text-tint-1 md:block" />
+        <Sparkle size={22} delay={-2.3} className="absolute left-[46%] top-[2.5%] text-white" />
+        <Barcode className="absolute right-5 top-1/2 hidden h-[180px] w-9 -translate-y-1/2 text-white/80 xl:block" />
 
-            <div className={`grid gap-4 ${category.category === 'Frontend Development'
-              ? 'grid-cols-3 sm:grid-cols-4 md:grid-cols-5'
-              : category.category === 'Data Engineering'
-                ? 'grid-cols-2'
-                : 'grid-cols-3'
-              }`}>
-              {category.skills.map((skill) => (
-                <motion.a
-                  key={skill.name}
-                  href={skill.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex flex-col items-center justify-center group cursor-pointer"
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                >
-                  <div className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center mb-2">
-                    <img
-                      src={skill.svg}
-                      alt={`${skill.name} icon`}
-                      className={`w-10 h-10 md:w-12 md:h-12 object-contain ${skill.name === 'Astro'
-                        ? 'dark:drop-shadow-none drop-shadow-[0_0_2px_rgba(0,0,0,0.8)]'
-                        : ''
-                        }`}
-                      loading="lazy"
-                    />
-                  </div>
-                  <span className="text-xs text-center text-gray-700 dark:text-zinc-300 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-all font-medium opacity-0 group-hover:opacity-100 duration-200">
-                    {skill.name}
-                  </span>
-                </motion.a>
-              ))}
+        <div className="relative xl:pr-16">
+          {skillCategories.map((group, row) => (
+            <div key={group.category} className="lineup-row">
+              <h3 className="lineup-stamp m-0">
+                <span aria-hidden="true">{pad(row + 1)}</span>
+                {group.category}
+              </h3>
+              <div className="lineup-clip">
+              <ul className="lineup-list" style={{ fontSize: tierSize(row) }}>
+                {group.skills.map((skill, i) => {
+                  const tilt = skill.highlight ? TILTS[stickerCount++ % TILTS.length] : null;
+                  const chip = (
+                    <span
+                      className={skill.highlight ? 'skill-chip sticker' : 'skill-chip'}
+                      style={skill.highlight ? { '--r': tilt, animationDelay: `${-(stickerCount % 5) * 0.9}s` } : undefined}
+                    >
+                      {skill.name}
+                    </span>
+                  );
+                  if (!skill.url) {
+                    return (
+                      <li key={skill.name}>
+                        <SeparatorStar />
+                        {chip}
+                      </li>
+                    );
+                  }
+                  const tipId = `skill-tip-${row}-${i}`;
+                  return (
+                    <li key={skill.name}>
+                      <SeparatorStar />
+                      <a
+                        href={skill.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="skill-link"
+                        aria-describedby={skill.blurb ? tipId : undefined}
+                      >
+                        <span className="skill-peel">
+                          {chip}
+                          <BurstStar />
+                        </span>
+                        <span className="sr-only">, opens official page in a new tab</span>
+                        {skill.blurb && (
+                          <span id={tipId} className="skill-tag" aria-hidden="true">
+                            <span className="skill-tag-arrow">
+                              <ArrowIcon />
+                            </span>
+                            <span>
+                              <span className="skill-tag-name">{skill.name}</span>
+                              {skill.blurb}
+                            </span>
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  );
+                })}
+              </ul>
+              </div>
             </div>
-          </motion.div>
-        ))}
-      </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 };
 
-export default Skills; 
+export default Skills;

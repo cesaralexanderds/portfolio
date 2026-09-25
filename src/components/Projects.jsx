@@ -1,126 +1,176 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import projectsData from '../data/projects.json';
+import ExternalLink from './ExternalLink.jsx';
+import { Barcode, Sparkle } from './Decor.jsx';
 
 const { projects } = projectsData;
+const featured = projects.find((project) => project.featured);
+const others = projects.filter((project) => project !== featured);
 
-const Projects = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
+// Collage tiles cycle through these surfaces; each tile gets one ornament.
+const TONES = [
+  { card: 'bg-card shadow-[0_1px_0_var(--line),0_18px_36px_-26px_var(--shadow)]', tilt: 'md:rotate-[-1deg]', text: 'text-body-2', chip: 'chrome', link: 'text-accent-ink', ornament: 'barcode' },
+  { card: 'bg-invert-bg text-invert-fg', tilt: 'md:rotate-[1.2deg]', text: 'text-invert-muted', chip: 'border border-invert-edge bg-white/10 text-invert-fg', link: 'text-invert-fg', ornament: 'sparkle-invert' },
+  { card: 'bg-tint-card text-tint-card-ink', tilt: 'md:rotate-[0.8deg]', text: 'text-tint-card-ink', chip: 'chrome', link: 'text-tint-card-ink', ornament: 'barcode' },
+  { card: 'bg-accent-tint', tilt: 'md:rotate-[-1.1deg]', text: 'text-body-3', chip: 'chrome', link: 'text-accent-ink', ornament: 'sparkle' },
+];
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
+/** Holographic trading-card stack used when the featured project has no screenshot. */
+const TradingCardArt = () => (
+  <svg aria-hidden="true" focusable="false" viewBox="0 0 550 300" className="block h-auto w-full max-w-[550px] self-center">
+    <defs>
+      <linearGradient id="holo" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#ffffff" />
+        <stop offset="0.35" stopColor="#c9d6ff" />
+        <stop offset="0.6" stopColor="#9fb4f5" />
+        <stop offset="1" stopColor="#ffffff" />
+      </linearGradient>
+      <clipPath id="frontCard">
+        <rect x="0" y="0" width="190" height="262" rx="16" />
+      </clipPath>
+    </defs>
+    <g transform="translate(318 44) rotate(11)">
+      <rect x="0" y="0" width="170" height="236" rx="14" fill="#1b37b3" stroke="#c9d6ff" strokeWidth="2" />
+      <rect x="12" y="12" width="146" height="212" rx="9" fill="none" stroke="#9fb4f5" strokeWidth="1" strokeDasharray="3 4" />
+      <circle cx="85" cy="92" r="26" fill="#9fb4f5" opacity="0.6" />
+      <path d="M36 170C36 132 134 132 134 170Z" fill="#9fb4f5" opacity="0.6" />
+      <rect x="30" y="186" width="110" height="10" rx="5" fill="#c9d6ff" opacity="0.7" />
+    </g>
+    <g transform="translate(64 60) rotate(-9)">
+      <rect x="0" y="0" width="150" height="208" rx="12" fill="#e3e8f8" opacity="0.28" stroke="#ffffff" strokeOpacity="0.6" />
+    </g>
+    <g transform="translate(168 22) rotate(-4)">
+      <rect x="0" y="0" width="190" height="262" rx="16" fill="url(#holo)" />
+      <rect x="10" y="10" width="170" height="242" rx="10" fill="#1b37b3" />
+      <path d="M28 34C29 26 31 24 38 23C31 22 29 20 28 12C27 20 25 22 18 23C25 24 27 26 28 34Z" fill="#ffffff" />
+      <rect x="120" y="20" width="46" height="16" rx="8" fill="#c9d6ff" />
+      <circle cx="95" cy="92" r="30" fill="#9fb4f5" />
+      <path d="M40 176C40 134 150 134 150 176Z" fill="#9fb4f5" />
+      <rect x="30" y="190" width="130" height="12" rx="6" fill="#ffffff" />
+      <rect x="30" y="212" width="58" height="7" rx="3.5" fill="#c9d6ff" />
+      <rect x="102" y="212" width="46" height="7" rx="3.5" fill="#c9d6ff" />
+      <rect x="30" y="226" width="40" height="7" rx="3.5" fill="#9fb4f5" />
+      <rect x="102" y="226" width="58" height="7" rx="3.5" fill="#9fb4f5" />
+      <g clipPath="url(#frontCard)">
+        <g transform="skewX(-18)">
+          <rect className="shimmer" x="0" y="-20" width="46" height="310" fill="#ffffff" opacity="0.32" />
+        </g>
+      </g>
+    </g>
+    <path
+      className="twinkle"
+      d="M470 60C471.5 45 475 41.5 490 40C475 38.5 471.5 35 470 20C468.5 35 465 38.5 450 40C465 41.5 468.5 45 470 60Z"
+      fill="#ffffff"
+    />
+    <path
+      className="twinkle"
+      style={{ animationDelay: '-1.6s' }}
+      d="M96 262C97 252 99 250 109 249C99 248 97 246 96 236C95 246 93 248 83 249C93 250 95 252 96 262Z"
+      fill="#ffffff"
+    />
+  </svg>
+);
 
-  return (
-    <section id="projects" className="py-12 section md:pt-24 md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="text-3xl font-semibold mb-8 text-center md:text-left text-gray-900 dark:text-white"
-      >
-        Projects
-      </motion.h2>
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
-        {projects.map((project, index) => (
-          <motion.article
-            key={project.id || index}
-            variants={itemVariants}
-            whileHover={{
-              y: -5,
-              transition: { duration: 0.2, ease: "easeOut" }
-            }}
-            className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md rounded-lg overflow-hidden border border-gray-200 dark:border-zinc-800 hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10 transition-colors"
-          >
-            <div className="p-6 flex flex-col h-full">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{project.title}</h3>
-              <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, techIndex) => (
-                  <motion.span
-                    key={techIndex}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.1 * techIndex }}
-                    className="px-3 py-1 bg-gray-200 dark:bg-zinc-900/80 rounded-full text-xs text-gray-700 dark:text-zinc-300 border border-gray-300 dark:border-zinc-700/50"
-                  >
-                    {tech}
-                  </motion.span>
-                ))}
-              </div>
-              <p className="text-gray-700 dark:text-zinc-300 leading-relaxed mt-4 flex-grow">{project.description}</p>
-              <div className="pt-6 mt-auto flex flex-wrap gap-3">
-                {project.liveUrl && project.liveUrl.trim() !== '' && (
-                  <motion.a
-                    href={project.liveUrl}
-                    className="inline-flex items-center px-4 py-2 bg-orange-600 hover:bg-orange-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 text-sm font-medium"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                    View Live Project
-                  </motion.a>
-                )}
-                {project.githubUrl && project.githubUrl.trim() !== '' ? (
-                  <motion.a
-                    href={project.githubUrl}
-                    className="inline-flex items-center px-4 py-2 bg-transparent border border-gray-300 dark:border-zinc-600 hover:bg-gray-100 dark:hover:bg-zinc-700 text-gray-700 dark:text-zinc-300 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 text-sm font-medium"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <img
-                      src="/github-mark-white.svg"
-                      className="h-4 w-4 mr-2 dark:inline hidden"
-                      alt="GitHub logo"
-                      loading="lazy"
-                      aria-hidden="true"
-                    />
-                    <img
-                      src="/github-mark-white.svg"
-                      className="h-4 w-4 mr-2 dark:hidden inline filter invert"
-                      alt="GitHub logo"
-                      loading="lazy"
-                      aria-hidden="true"
-                    />
-                    View Code
-                  </motion.a>
-                ) : (
-                  <span className="text-sm text-gray-500 dark:text-zinc-500 italic flex items-center">Code repository not available</span>
-                )}
-              </div>
-            </div>
-          </motion.article>
-        ))}
-      </motion.div>
-    </section>
-  );
+const FeaturedArt = ({ project }) => {
+  if (project.image) {
+    return (
+      <img
+        src={project.image}
+        alt={project.imageAlt ?? `${project.title} screenshot`}
+        width={1600}
+        height={1000}
+        loading="lazy"
+        className="block aspect-[16/10] h-auto w-full rounded-xl object-cover"
+      />
+    );
+  }
+  return project.art === 'trading-card' ? <TradingCardArt /> : null;
 };
 
-export default Projects; 
+const FeaturedCard = ({ project }) => (
+  <article
+    className="relative flex flex-col gap-5 overflow-hidden rounded-[24px] p-6 text-white md:col-span-2 md:p-10 xl:row-span-2"
+    style={{ background: 'linear-gradient(170deg, #1b37b3 0%, #2443d6 60%)' }}
+  >
+    <FeaturedArt project={project} />
+    <h3
+      className="m-0 mt-2 font-display font-extrabold leading-none tracking-[-0.04em]"
+      style={{ fontSize: 'clamp(2.25rem, 4vw, 3.125rem)' }}
+    >
+      {project.title}
+    </h3>
+    <p className="m-0 max-w-[520px] text-base leading-[1.55] md:text-lg">{project.summary ?? project.description}</p>
+    <div className="mt-auto flex flex-wrap items-center justify-between gap-5">
+      <ul className="m-0 flex list-none flex-wrap gap-2 p-0 font-mono text-xs">
+        {project.technologies.map((tech) => (
+          <li key={tech} className="rounded-full border border-white/50 bg-white/15 px-[13px] py-[7px]">
+            {tech}
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-3">
+        {project.liveUrl && (
+          <ExternalLink href={project.liveUrl} className="pill chrome h-[52px] px-6">
+            Visit site
+          </ExternalLink>
+        )}
+        {project.githubUrl && (
+          <ExternalLink href={project.githubUrl} className="pill h-[52px] border border-white px-6 text-white">
+            Code
+          </ExternalLink>
+        )}
+      </div>
+    </div>
+  </article>
+);
+
+const Ornament = ({ kind }) => {
+  if (kind === 'barcode') return <Barcode horizontal className="mt-auto h-[22px] w-[150px]" />;
+  if (kind === 'sparkle') return <Sparkle size={30} delay={-1.4} className="mt-auto self-end text-accent-ink" />;
+  if (kind === 'sparkle-invert') return <Sparkle size={30} className="mt-auto self-end text-invert-accent" />;
+  return null;
+};
+
+const ProjectCard = ({ project, tone }) => (
+  <article className={`relative flex min-h-[260px] flex-col gap-3 rounded-card p-7 ${tone.card} ${tone.tilt}`}>
+    <span
+      className={`self-start rounded-[14px] px-3 py-1.5 font-mono text-[11px] font-bold ${tone.chip}`}
+    >
+      {project.technologies.join(', ')}
+    </span>
+    <h3 className="m-0 font-display text-xl font-bold leading-[1.18] tracking-[-0.02em]">{project.title}</h3>
+    <p className={`m-0 text-[15px] leading-[1.55] ${tone.text}`}>{project.summary ?? project.description}</p>
+    {project.liveUrl || project.githubUrl ? (
+      <div className="mt-auto flex gap-4 font-mono text-[13px] font-bold">
+        {project.liveUrl && (
+          <ExternalLink href={project.liveUrl} className={`hover:underline ${tone.link}`}>
+            Visit
+          </ExternalLink>
+        )}
+        {project.githubUrl && (
+          <ExternalLink href={project.githubUrl} className={`hover:underline ${tone.link}`}>
+            Code
+          </ExternalLink>
+        )}
+      </div>
+    ) : (
+      <Ornament kind={tone.ornament} />
+    )}
+  </article>
+);
+
+const Projects = () => (
+  <section id="projects" aria-labelledby="projects-title" className="page-gutter section-space">
+    <h2 id="projects-title" className="section-title">
+      Projects
+    </h2>
+    <div className="mt-12 grid gap-[22px] md:mt-14 md:grid-cols-2 xl:grid-cols-4 xl:grid-rows-[minmax(340px,auto)_minmax(340px,auto)]">
+      {featured && <FeaturedCard project={featured} />}
+      {others.map((project, i) => (
+        <ProjectCard key={project.title} project={project} tone={TONES[i % TONES.length]} />
+      ))}
+    </div>
+  </section>
+);
+
+export default Projects;

@@ -1,21 +1,25 @@
 import React from 'react';
+import infoData from '../data/info.json';
+import ExternalLink from './ExternalLink.jsx';
 
+const { about, contact } = infoData;
 const currentYear = new Date().getFullYear();
 
-const Footer = () => {
-  return (
-    <footer
-      className="opacity-80 min-[375px]:pl-4 md:pl-0 mt-16 w-full mx-auto container lg:max-w-4xl md:max-w-2xl flex justify-center"
-    >
-      <div
-        className="rounded-lg w-full max-w-screen-xl mx-auto md:flex md:items-center md:justify-between lg:justify-between py-4"
-      >
-        <span className="text-sm sm:text-center text-zinc-800/90 dark:text-zinc-200/90">
-          © {currentYear} Made with <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" className="hover:underline">React</a> and <a href="https://astro.build/" target="_blank" rel="noopener noreferrer" className="hover:underline">Astro</a>
-        </span>
+const Footer = () => (
+  <footer className="page-gutter">
+    <div className="flex flex-col gap-3 py-8 text-sm text-muted sm:min-h-24 sm:flex-row sm:items-center sm:justify-between">
+      <span>
+        © {currentYear} {about.name}
+      </span>
+      <div className="flex gap-7">
+        {contact.links.map((link) => (
+          <ExternalLink key={link.url} href={link.url} className="link-hover text-muted">
+            {link.label}
+          </ExternalLink>
+        ))}
       </div>
-    </footer>
-  );
-};
+    </div>
+  </footer>
+);
 
-export default Footer; 
+export default Footer;

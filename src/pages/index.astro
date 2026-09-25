@@ -1,21 +1,59 @@
 ---
 import Layout from '@/layouts/Layout.astro';
-
-import About from '@/components/About.jsx';
 import Hero from '@/components/Hero.jsx';
+import Experience from '@/components/Experience.jsx';
 import Projects from '@/components/Projects.jsx';
 import Skills from '@/components/Skills.jsx';
-import Experience from '@/components/Experience.jsx';
-import ScrollToTop from '@/components/ScrollToTop';
+import About from '@/components/About.jsx';
+import Contact from '@/components/Contact.jsx';
+import infoData from '@/data/info.json';
+
+const { about } = infoData;
 ---
 
-<Layout title="cesar alexander's developer portfolio!" description="Motivated Computer Science student with a solid foundation in software development, databases, and data science. Committed to continuous learning, with certifications in advanced web development and data science. Seeking to leverage my skills in challenging environments to create impactful technological solutions.">
-    <ScrollToTop client:visible/>
-    <main id="main-content">
-    <Hero client:visible />
-    <Experience client:visible />
-    <Projects client:visible />
-    <About client:visible />
-    <Skills client:visible />
-    </main>
+<Layout title={`${about.shortName} | ${about.title}`} description={about.description[0]}>
+  <main id="main-content">
+    <Hero />
+    <Experience />
+    <Projects />
+    <Skills />
+    <!-- Progressive enhancement: line the skill tag up with the hovered/focused skill (see .skill-tag). -->
+    <script is:inline>
+      (function () {
+        var panel = document.querySelector('.lineup');
+        if (!panel || !window.matchMedia) return;
+        var wide = window.matchMedia('(min-width: 768px)');
+        var PAD = 12;
+        var GAP = 10;
+        function place(event) {
+          var link = event.target.closest && event.target.closest('.skill-link');
+          if (!link || !panel.contains(link)) return;
+          var row = link.closest('.lineup-row');
+          var tag = link.querySelector('.skill-tag');
+          if (!row || !tag) return;
+          var rowBox = row.getBoundingClientRect();
+          var item = link.getBoundingClientRect();
+          var box = panel.getBoundingClientRect();
+          var height = tag.offsetHeight;
+          var min = box.top + PAD - rowBox.top;
+          var max = box.bottom - PAD - rowBox.top - height;
+          var y;
+          if (wide.matches) {
+            // Centre the tag on the item's line, in the label column.
+            y = item.top + item.height / 2 - rowBox.top - height / 2;
+          } else {
+            // Directly below the item; flip above it if that would leave the panel.
+            y = item.bottom - rowBox.top + GAP;
+            if (y > max) y = item.top - rowBox.top - height - GAP;
+          }
+          y = Math.max(min, Math.min(max, y));
+          row.style.setProperty('--tag-y', Math.round(y) + 'px');
+        }
+        panel.addEventListener('pointerover', place);
+        panel.addEventListener('focusin', place);
+      })();
+    </script>
+    <About />
+    <Contact />
+  </main>
 </Layout>

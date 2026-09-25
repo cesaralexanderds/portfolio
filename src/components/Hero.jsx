@@ -1,140 +1,173 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import infoData from '../data/info.json';
+import experienceData from '../data/experience.json';
+import ExternalLink from './ExternalLink.jsx';
+import { Barcode, Globe, RegMark, Sparkle } from './Decor.jsx';
 
-const profilePhotoSrc = '/photo.webp';
+const { about, hero, contact } = infoData;
+const current = experienceData.experience.find((exp) => exp.endDate === 'Present');
+const PHOTO = '/photo.webp';
 
-const Hero = () => {
+// Poster sparkles: [left %, top %, size in cqw, delay s, visible on mobile].
+const SPARKLES = [
+  [93.4, 2.3, 3.6, 0, true],
+  [2.7, 36.5, 2, -1.2, false],
+  [43.75, 40.4, 2.8, -2.1, false],
+  [91.4, 67.3, 1.7, -0.6, true],
+  [36.7, 61.5, 2.3, -2.7, false],
+];
 
-  const handleSmoothScroll = (e, targetId) => {
-    e.preventDefault();
-    const element = document.querySelector(targetId);
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+// Melting "drips" hanging off the chrome word (SMIL heights), in the word's 1280 x 380 space.
+const DRIPS = [
+  { x: 104, w: 26, values: '54;86;54', dur: 5.5 },
+  { x: 318, w: 22, values: '70;40;96;70', dur: 7 },
+  { x: 612, w: 30, values: '48;78;48', dur: 6.2 },
+  { x: 808, w: 24, values: '80;52;104;80', dur: 8 },
+  { x: 1182, w: 26, values: '60;92;60', dur: 6.8 },
+];
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
+const LiquidWord = ({ text }) => (
+  <svg className="poster-word" aria-hidden="true" focusable="false" viewBox="0 0 1280 380" data-smil="">
+    <g filter="url(#liquid)" fill="url(#chrome)">
+      <text
+        x="40"
+        y="300"
+        textLength="1200"
+        lengthAdjust="spacingAndGlyphs"
+        style={{ fontFamily: "'Unbounded', system-ui, sans-serif", fontWeight: 800, fontSize: 300, letterSpacing: '-0.04em' }}
+      >
+        {text}
+      </text>
+      {DRIPS.map((drip) => (
+        <rect key={drip.x} x={drip.x} y="262" width={drip.w} height={drip.values.split(';')[0]} rx={drip.w / 2}>
+          <animate attributeName="height" dur={`${drip.dur}s`} values={drip.values} repeatCount="indefinite" />
+        </rect>
+      ))}
+      <circle cx="329" cy="352" r="12">
+        <animate attributeName="cy" dur="7s" values="352;330;368;352" repeatCount="indefinite" />
+      </circle>
+      <circle cx="820" cy="360" r="13">
+        <animate attributeName="cy" dur="8s" values="360;340;376;360" repeatCount="indefinite" />
+      </circle>
+    </g>
+  </svg>
+);
 
-  return (
-    <section className="pt-24 pb-16 md:pt-32 md:pb-36 section scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl" id="home">
-      <div className="flex flex-col md:flex-row items-center md:justify-between">
-        <div>
-          <motion.img
-            src={profilePhotoSrc}
-            height={240}
-            width={240}
-            className="mb-10 mt-10 md:mt-0 rounded-full md:mx-0"
-            alt="César Alexander's profile photo"
+const Poster = () => (
+  <div className="poster">
+    {/* Horizon lines and glow */}
+    <div aria-hidden="true" className="poster-deco inset-x-0 top-[67.3%] z-0 h-px bg-white/70" />
+    <div aria-hidden="true" className="poster-deco inset-x-0 top-[68.5%] z-0 h-px bg-white/35" />
+    <div
+      aria-hidden="true"
+      className="poster-deco left-[-15.6%] top-[50%] z-0 h-[34.6%] w-[131%] rounded-[50%]"
+      style={{ background: 'radial-gradient(closest-side, rgba(255,255,255,0.45), rgba(255,255,255,0))' }}
+    />
+
+    {SPARKLES.map(([left, top, size, delay, mobile]) => (
+      <Sparkle
+        key={`${left}-${top}`}
+        delay={delay}
+        className={`poster-deco text-white ${mobile ? '' : 'hidden md:block'}`}
+        style={{ left: `${left}%`, top: `${top}%`, width: `max(18px, ${size}cqw)`, height: `max(18px, ${size}cqw)` }}
+      />
+    ))}
+
+    <RegMark className="poster-deco left-3.5 top-3.5 text-white" />
+    <RegMark className="poster-deco right-3.5 top-3.5 text-white" />
+    <RegMark className="poster-deco bottom-3.5 left-3.5 text-[#121413]" />
+    <RegMark className="poster-deco bottom-3.5 right-3.5 text-[#121413]" />
+
+    <Barcode className="poster-deco right-[4.4cqw] top-[34.4cqw] hidden h-[17.2cqw] w-[3.6cqw] text-white xl:block" />
+    <Globe
+      className="poster-deco bottom-[3.9cqw] right-[3.4cqw] hidden h-[9.4cqw] w-[9.4cqw] min-w-[72px] text-[#121413] md:block"
+    />
+    <p
+      aria-hidden="true"
+      className="poster-deco bottom-[2.6cqw] left-[29.7cqw] m-0 hidden font-mono text-xs font-bold uppercase tracking-[0.22em] lg:block"
+    >
+      {about.name}
+    </p>
+
+    <LiquidWord text={hero.displayWord} />
+
+    <div className="poster-body">
+      <div className="arch">
+        <div className="arch-frame">
+          <img
+            src={PHOTO}
+            alt={hero.portraitAlt}
+            width={520}
+            height={780}
             loading="eager"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
+            fetchPriority="high"
+            className="duo block h-full w-full object-cover"
           />
-          <motion.h1
-            className="text-4xl font-bold tracking-tight text-gray-800 sm:text-5xl dark:text-white"
-            id="home"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            Hi! I'm César Alexander
-          </motion.h1>
-
-          <motion.p
-            className="tracking-[0.06em] text-xl text-gray-700 dark:text-zinc-200"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            A computer science graduate, and software developer, focused on web development and data engineering.
-          </motion.p>
-          <motion.div
-            className="md:w-full mt-6 text-xl text-gray-700 dark:text-zinc-200"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-          >
-            <p className="[&>strong]:text-orange-400">
-              I am a <strong>Computer Science</strong> graduate at <span className="text-orange-500 font-bold">UANL</span> and a Software Engineer, with a strong interest in web development and data engineering.
-            </p>
-            <p>
-              Currently working as a Developer Analyst at <span className="text-orange-500 font-bold">Grupo DEACERO</span>.
-            </p>
-          </motion.div>
-
-          <motion.div
-            className="mt-8 flex flex-col sm:flex-row gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 1.0 }}
-          >
-            <motion.a
-              href="https://github.com/cesaralexanderds/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 dark:bg-zinc-800 hover:bg-gray-800 dark:hover:bg-zinc-700 text-white font-medium rounded-lg transition-colors duration-200 border border-gray-900 dark:border-zinc-700"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="GitHub"
-            >
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-              </svg>
-              GitHub
-            </motion.a>
-
-            <motion.a
-              href="https://www.linkedin.com/in/c-a-d-s/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#0077b5] hover:bg-[#005e93] text-white font-medium rounded-lg transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="LinkedIn"
-            >
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-              </svg>
-              LinkedIn
-            </motion.a>
-
-            <motion.a
-              href="/Cesar_Delgadillo_CV.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-6 py-3 bg-orange-600 hover:bg-orange-700 text-white font-medium rounded-lg transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Resume"
-            >
-              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
-                <path fillRule="evenodd" clipRule="evenodd" d="M3 24h19v-23h-1v22h-18v1zm17-24h-18v22h18v-22zm-1 1h-16v20h16v-20zm-2 16h-12v1h12v-1zm0-3h-12v1h12v-1zm0-3h-12v1h12v-1zm-7.348-3.863l.948.3c-.145.529-.387.922-.725 1.178-.338.257-.767.385-1.287.385-.643 0-1.171-.22-1.585-.659-.414-.439-.621-1.04-.621-1.802 0-.806.208-1.432.624-1.878.416-.446.963-.669 1.642-.669.592 0 1.073.175 1.443.525.221.207.386.505.496.892l-.968.231c-.057-.251-.177-.449-.358-.594-.182-.146-.403-.218-.663-.218-.359 0-.65.129-.874.386-.223.258-.335.675-.335 1.252 0 .613.11 1.049.331 1.308.22.26.506.39.858.39.26 0 .484-.082.671-.248.187-.165.322-.425.403-.779zm3.023 1.78l-1.731-4.842h1.06l1.226 3.584 1.186-3.584h1.037l-1.734 4.842h-1.044z" />
-              </svg>
-              Resume
-            </motion.a>
-
-            <motion.a
-              href="mailto:cesaralexanderds@gmail.com"
-              className="inline-flex items-center justify-center px-6 py-3 bg-transparent border-2 border-gray-900 dark:border-white hover:bg-orange-600 hover:border-orange-600 dark:hover:bg-orange-600 dark:hover:border-orange-600 hover:text-white text-gray-900 dark:text-white font-medium rounded-lg transition-colors duration-200"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              aria-label="Email"
-            >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              Email
-            </motion.a>
-          </motion.div>
         </div>
       </div>
-    </section>
-  );
-};
 
-export default Hero; 
+      <div className="poster-info">
+        <dl className="poster-card m-0 grid grid-cols-[88px_minmax(0,1fr)] gap-y-3.5 text-[15px] sm:grid-cols-[104px_minmax(0,1fr)]">
+          {current && (
+            <>
+              <dt className="mono-label pt-0.5 font-normal text-[#595e5a]">Now</dt>
+              <dd className="m-0">
+                {current.jobTitle}, {current.company}
+              </dd>
+            </>
+          )}
+          <dt className="mono-label pt-0.5 font-normal text-[#595e5a]">Focus</dt>
+          <dd className="m-0">{hero.focus}</dd>
+          <dt className="mono-label pt-0.5 font-normal text-[#595e5a]">Elsewhere</dt>
+          <dd className="m-0 flex flex-wrap gap-x-4 gap-y-1">
+            {contact.links.map((link) => (
+              <ExternalLink key={link.url} href={link.url} className="font-semibold">
+                {link.label}
+              </ExternalLink>
+            ))}
+          </dd>
+        </dl>
+      </div>
+
+      <div className="poster-lower">
+        <div className="floaty collage hidden md:block">
+          <div className="collage-crop">
+            <img src={PHOTO} alt="" width={440} height={560} loading="lazy" className="duo2" />
+          </div>
+        </div>
+        <span className="bob poster-tag">{hero.location}</span>
+      </div>
+    </div>
+  </div>
+);
+
+const Hero = () => (
+  <section id="home" aria-labelledby="hero-title" className="page-gutter pt-4 md:pt-8">
+    <Poster />
+
+    <h1
+      id="hero-title"
+      className="m-0 mt-10 max-w-[1280px] font-display font-extrabold leading-[1.05] tracking-[-0.035em] md:mt-12"
+      style={{ fontSize: 'clamp(2.25rem, 5vw, 4rem)' }}
+    >
+      {hero.headline} <span className="text-accent-ink">{hero.headlineAccent}</span>
+    </h1>
+
+    <div className="mt-8 grid items-end gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:gap-10">
+      <p className="m-0 max-w-[520px] text-lg leading-normal text-body-2 md:text-[22px]">{hero.intro}</p>
+      <div className="flex flex-wrap gap-3">
+        <a
+          href={contact.resume}
+          className="pill h-14 bg-accent px-8 text-[17px] text-on-accent shadow-[inset_0_1px_0_rgba(255,255,255,0.35)] hover:bg-accent-deep md:h-[58px]"
+        >
+          Resume
+        </a>
+        <a href={`mailto:${contact.email}`} className="pill chrome h-14 px-8 text-[17px] md:h-[58px]">
+          Email me
+        </a>
+      </div>
+    </div>
+  </section>
+);
+
+export default Hero;

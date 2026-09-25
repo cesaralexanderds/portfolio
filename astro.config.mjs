@@ -6,6 +6,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), sitemap()],
+  // Base styles are imported from src/styles/global.css in Layout.astro.
+  integrations: [tailwind({ applyBaseStyles: false }), react(), sitemap()],
   site: 'https://example.com'
 });

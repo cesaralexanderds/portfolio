@@ -1,119 +1,83 @@
 {
-    "skillCategories": [
-        {
-            "category": "Data Engineering",
-            "skills": [
-                {
-                    "name": "Google Cloud Platform",
-                    "svg": "/gcp.svg",
-                    "url": "https://cloud.google.com/"
-                },
-                {
-                    "name": "Airbyte",
-                    "svg": "/Airbyte.svg",
-                    "url": "https://airbyte.com/"
-                },
-                {
-                    "name": "Python",
-                    "svg": "/python.svg",
-                    "url": "https://www.python.org/"
-                },
-                {
-                    "name": "SQL Server",
-                    "svg": "/sql-server.svg",
-                    "url": "https://www.microsoft.com/en-us/sql-server"
-                },
-                {
-                    "name": "MySQL",
-                    "svg": "/mysql.svg",
-                    "url": "https://www.mysql.com/"
-                }
-            ]
-        },
-        {
-            "category": "Frontend Development",
-            "skills": [
-                {
-                    "name": "HTML",
-                    "svg": "/html5.svg",
-                    "url": "https://developer.mozilla.org/en-US/docs/Web/HTML"
-                },
-                {
-                    "name": "CSS",
-                    "svg": "/css.svg",
-                    "url": "https://developer.mozilla.org/en-US/docs/Web/CSS"
-                },
-                {
-                    "name": "JavaScript",
-                    "svg": "/javascript.svg",
-                    "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                },
-                {
-                    "name": "TypeScript",
-                    "svg": "/typescript.svg",
-                    "url": "https://www.typescriptlang.org/"
-                },
-                {
-                    "name": "React",
-                    "svg": "/react.svg",
-                    "url": "https://react.dev/"
-                },
-                {
-                    "name": "Angular",
-                    "svg": "/angular.svg",
-                    "url": "https://angular.io/"
-                },
-                {
-                    "name": "Tailwind CSS",
-                    "svg": "/tailwindcss.svg",
-                    "url": "https://tailwindcss.com/"
-                },
-                {
-                    "name": "Astro",
-                    "svg": "/astro_dark.svg",
-                    "url": "https://astro.build/"
-                },
-                {
-                    "name": "Ionic",
-                    "svg": "/ionic-dark.svg",
-                    "url": "https://ionicframework.com/"
-                }
-            ]
-        },
-        {
-            "category": "Backend Development",
-            "skills": [
-                {
-                    "name": "C#",
-                    "svg": "/csharp.svg",
-                    "url": "https://learn.microsoft.com/en-us/dotnet/csharp/"
-                },
-                {
-                    "name": ".NET",
-                    "svg": "/dotnet.svg",
-                    "url": "https://dotnet.microsoft.com/"
-                },
-                {
-                    "name": "Firebase",
-                    "svg": "/firebase.svg",
-                    "url": "https://firebase.google.com/"
-                }
-            ]
-        },
-        {
-            "category": "Tools",
-            "skills": [
-                {
-                    "name": "Git",
-                    "svg": "/git.svg",
-                    "url": "https://git-scm.com/"
-                },
-                {
-                    "name": "GitHub",
-                    "svg": "/github-mark-white.svg",
-                    "url": "https://github.com/"
-                }
-            ]
-        }
-    ]
+  "skillCategories": [
+    {
+      "category": "Cloud & Data",
+      "skills": [
+        { "name": "Google Cloud Platform", "highlight": true, "url": "https://cloud.google.com/", "blurb": "Google's public cloud for compute, storage, data and AI services." },
+        { "name": "Microsoft Azure", "highlight": true, "url": "https://azure.microsoft.com/", "blurb": "Microsoft's cloud platform for compute, data and application services." },
+        { "name": "Azure Functions", "url": "https://learn.microsoft.com/azure/azure-functions/", "blurb": "Serverless, event-driven compute on Azure for scheduled and triggered jobs." },
+        { "name": "BigQuery", "highlight": true, "url": "https://cloud.google.com/bigquery", "blurb": "Serverless data warehouse on Google Cloud, queried with SQL." },
+        { "name": "Google Datastream", "url": "https://cloud.google.com/datastream", "blurb": "Serverless change data capture and replication service on Google Cloud." },
+        { "name": "Samsara Telematics", "url": "https://developers.samsara.com/", "blurb": "Samsara's API for fleet telematics: vehicles, drivers, locations and events." },
+        { "name": "SQL Server", "highlight": true, "url": "https://learn.microsoft.com/sql/sql-server/", "blurb": "Microsoft's relational database engine." },
+        { "name": "ETL Pipelines", "url": "https://en.wikipedia.org/wiki/Extract,_transform,_load", "blurb": "Extract, transform, load: moving data from sources into a target store." },
+        { "name": "Batch Processing", "url": "https://en.wikipedia.org/wiki/Batch_processing", "blurb": "Running jobs over groups of records on a schedule, without user interaction." },
+        { "name": "CDC", "url": "https://en.wikipedia.org/wiki/Change_data_capture", "blurb": "Change data capture: tracking row-level changes to replicate them downstream." },
+        { "name": "Data Quality", "url": "https://en.wikipedia.org/wiki/Data_quality", "blurb": "How accurate, complete, consistent and timely a dataset is." },
+        { "name": "Apache Airflow", "url": "https://airflow.apache.org/", "blurb": "Open-source platform to author, schedule and monitor workflows as code." },
+        { "name": "Docker", "url": "https://docs.docker.com/", "blurb": "Tooling to build, ship and run applications in containers." },
+        { "name": "Power BI", "url": "https://learn.microsoft.com/power-bi/", "blurb": "Microsoft's business intelligence tool for reports and dashboards." }
+      ]
+    },
+    {
+      "category": "Programming Languages",
+      "skills": [
+        { "name": "Python", "highlight": true, "url": "https://www.python.org/", "blurb": "General-purpose programming language, widely used for data work." },
+        { "name": "SQL", "highlight": true, "url": "https://en.wikipedia.org/wiki/SQL", "blurb": "Standard language for querying and managing relational data." },
+        { "name": "C#", "url": "https://learn.microsoft.com/dotnet/csharp/", "blurb": "Typed, object-oriented language for the .NET platform." },
+        { "name": "C", "url": "https://en.wikipedia.org/wiki/C_(programming_language)", "blurb": "Low-level, compiled systems programming language." },
+        { "name": "TypeScript", "url": "https://www.typescriptlang.org/", "blurb": "JavaScript with static types, compiled to plain JavaScript." },
+        { "name": "JavaScript", "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "blurb": "The scripting language of the web, run in browsers and on servers." },
+        { "name": "HTML/CSS", "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development", "blurb": "The markup and styling languages that structure and lay out web pages." }
+      ]
+    },
+    {
+      "category": "Backend & APIs",
+      "skills": [
+        { "name": "RESTful Architecture", "url": "https://en.wikipedia.org/wiki/REST", "blurb": "Architectural style for HTTP APIs built around resources and verbs." },
+        { "name": "JWT Authentication", "url": "https://jwt.io/introduction", "blurb": "Signed JSON tokens used to carry identity claims between services." },
+        { "name": "Microservices", "url": "https://en.wikipedia.org/wiki/Microservices", "blurb": "Building an application as small, independently deployable services." },
+        { "name": "Cache Invalidation", "url": "https://en.wikipedia.org/wiki/Cache_invalidation", "blurb": "Removing or refreshing cached data when the source of truth changes." },
+        { "name": "Concurrency Handling", "url": "https://en.wikipedia.org/wiki/Concurrency_control", "blurb": "Keeping data correct when many operations run at the same time." },
+        { "name": "Supabase", "url": "https://supabase.com/docs", "blurb": "Open-source backend platform built on Postgres, with auth and realtime." }
+      ]
+    },
+    {
+      "category": "Frameworks & Libraries",
+      "skills": [
+        { "name": ".NET Core", "url": "https://dotnet.microsoft.com/", "blurb": "Microsoft's cross-platform framework for building apps and APIs." },
+        { "name": "Angular", "url": "https://angular.dev/", "blurb": "Google's TypeScript framework for building web applications." },
+        { "name": "Ionic", "url": "https://ionicframework.com/", "blurb": "UI toolkit for building mobile apps with web technologies." },
+        { "name": "Tailwind CSS", "url": "https://tailwindcss.com/", "blurb": "Utility-first CSS framework for styling directly in markup." },
+        { "name": "Astro", "url": "https://docs.astro.build/", "blurb": "Web framework for content-driven sites that ships little JavaScript." },
+        { "name": "React", "url": "https://react.dev/", "blurb": "JavaScript library for building user interfaces from components." }
+      ]
+    },
+    {
+      "category": "Tools",
+      "skills": [
+        { "name": "Git/GitHub", "url": "https://docs.github.com/get-started/using-git/about-git", "blurb": "Git version control, and GitHub for hosting and reviewing code." },
+        { "name": "GitHub Actions", "url": "https://docs.github.com/actions", "blurb": "GitHub's CI/CD and automation workflows, run on repository events." },
+        { "name": "Postman", "url": "https://www.postman.com/", "blurb": "Platform for designing, testing and documenting APIs." },
+        { "name": "Firebase", "url": "https://firebase.google.com/", "blurb": "Google's app platform with a realtime database, auth and hosting." },
+        { "name": "SQL Server", "url": "https://learn.microsoft.com/sql/sql-server/", "blurb": "Microsoft's relational database engine." },
+        { "name": "MySQL", "url": "https://en.wikipedia.org/wiki/MySQL", "blurb": "Open-source relational database management system." }
+      ]
+    },
+    {
+      "category": "AI & Automation",
+      "skills": [
+        { "name": "AI-Pair Programming", "url": "https://en.wikipedia.org/wiki/AI-assisted_software_development", "blurb": "Writing code alongside an AI assistant that suggests and reviews changes." },
+        { "name": "Prompt Engineering", "url": "https://en.wikipedia.org/wiki/Prompt_engineering", "blurb": "Structuring instructions so language models give reliable results." },
+        { "name": "LLM Integration", "url": "https://en.wikipedia.org/wiki/Large_language_model", "blurb": "Connecting large language models to applications and data." }
+      ]
+    },
+    {
+      "category": "Languages",
+      "skills": [
+        { "name": "Spanish (Native)" },
+        { "name": "English (C1 - Professional Proficiency)" }
+      ]
+    }
+  ]
 }

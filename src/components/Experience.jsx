@@ -1,98 +1,120 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import experienceData from '../data/experience.json';
+import infoData from '../data/info.json';
+import { Barcode, Sparkle } from './Decor.jsx';
 
-const { experience } = experienceData;
+// JSON is newest first; keep the current role at the front regardless.
+const roles = [...experienceData.experience].sort((a, b) => (b.endDate === 'Present') - (a.endDate === 'Present'));
+const { badges } = infoData;
 
-const Experience = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2
-      }
-    }
-  };
+const shortDate = (value) => (value === 'Present' ? value : value.replace(/^(\w{3})\w*/, '$1'));
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut"
-      }
-    }
-  };
+// Roles with no bullets or tags render as a compact stub-style ticket (no empty description area).
+const isCompact = (role) => !role.highlights?.length && !role.description && !role.technologies?.length;
 
-  return (
-    <section id="experience" className="py-12 section md:pb-24 scroll-m-20 w-5/6 mx-auto container lg:max-w-6xl md:max-w-2xl">
-      <motion.h2
-        className="text-3xl font-semibold mb-8 text-center md:text-left text-gray-900 dark:text-white"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
+/** Company logo on a small tilted "stamp", so full-colour marks stay legible in both themes. */
+const LogoStamp = ({ role }) => (
+  <span className="logo-stamp" style={role.logoBg ? { background: role.logoBg } : undefined}>
+    <img
+      src={role.logo}
+      alt={role.logoAlt ?? `${role.company} logo`}
+      width={role.logoWidth}
+      height={role.logoHeight}
+      loading="lazy"
+      decoding="async"
+      className="block h-6 w-auto md:h-[30px]"
+    />
+  </span>
+);
+
+const Ticket = ({ role, isCurrent }) => (
+  <article className={`ticket ${isCurrent ? 'ticket-current' : 'ticket-past'}`}>
+    <div aria-hidden="true" className="ticket-notch -top-3.5" />
+    <div aria-hidden="true" className="ticket-notch -bottom-3.5" />
+    <div className="ticket-stub flex flex-col items-center gap-4 px-2 py-7 md:px-[18px] md:py-9">
+      <p
+        className={`m-0 text-center font-mono text-xs font-bold leading-normal md:text-[13px] ${
+          isCurrent ? 'text-accent-ink' : 'text-muted'
+        }`}
       >
-        Experience
-      </motion.h2>
-      <motion.div
-        className="space-y-8"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-      >
-        {[...experience].reverse().map((exp, index) => (
-          <motion.div
-            key={index}
-            variants={itemVariants}
-            whileHover={{
-              y: -4,
-              transition: { duration: 0.2, ease: "easeOut" }
-            }}
-            className="bg-white/50 dark:bg-zinc-900/50 backdrop-blur-md rounded-lg p-6 border border-gray-200 dark:border-zinc-800 hover:border-orange-500/50 dark:hover:border-orange-500/50 hover:shadow-xl hover:shadow-orange-500/10 transition-colors"
+        {shortDate(role.startDate)}
+        <br />- {shortDate(role.endDate)}
+      </p>
+      <Barcode
+        className={`mt-auto w-8 md:w-11 ${isCompact(role) ? 'h-12' : 'h-[150px]'} ${isCurrent ? 'text-accent-ink' : 'text-ink'}`}
+      />
+    </div>
+    <div className="flex min-w-0 flex-col gap-5 px-5 py-7 md:px-9 md:py-10">
+      {role.logo && <LogoStamp role={role} />}
+      <div className="flex flex-col gap-2">
+        <h3 className="m-0 font-display text-[22px] font-extrabold leading-[1.1] tracking-[-0.03em] md:text-[28px]">
+          {role.jobTitle}
+        </h3>
+        <p className="m-0 text-base text-body-2 md:text-[17px]">
+          {role.city ? `${role.company}, ${role.city}` : role.company}
+        </p>
+      </div>
+      {isCompact(role) ? null : role.highlights?.length ? (
+        <ul className="m-0 flex flex-col gap-3 pl-5 text-[15px] leading-[1.55] text-body-3 md:text-base">
+          {role.highlights.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      ) : (
+        <p className="m-0 text-base leading-relaxed text-body-3 md:text-[17px]">{role.description}</p>
+      )}
+      {role.technologies?.length > 0 && (
+      <ul className="m-0 mt-auto flex list-none flex-wrap gap-2 p-0 font-mono text-xs">
+        {role.technologies.map((tech) => (
+          <li
+            key={tech}
+            className={`rounded-full px-[13px] py-[7px] ${isCurrent ? 'border border-tag-edge bg-card' : 'bg-chip'}`}
           >
-            <motion.div
-              className="flex flex-col md:flex-row md:justify-between md:items-center mb-3"
-              variants={itemVariants}
-            >
-              <motion.h3
-                className="text-xl font-bold text-gray-900 dark:text-white"
-                variants={itemVariants}
-              >
-                {exp.jobTitle} at <span className="text-orange-600">{exp.company}</span>
-              </motion.h3>
-              <motion.span
-                className="text-sm text-gray-600 dark:text-zinc-400"
-                variants={itemVariants}
-              >
-                {exp.startDate} - {exp.endDate === "Present" ?
-                  <span className="text-orange-600 font-medium">{exp.endDate}</span> :
-                  exp.endDate}
-              </motion.span>
-
-            </motion.div>
-
-            <motion.p
-              className="text-gray-600 dark:text-zinc-300 leading-relaxed"
-              variants={itemVariants}
-            >
-              {exp.description}
-            </motion.p>
-
-            <motion.span
-              className="text-sm text-gray-600 dark:text-zinc-400 block mt-4"
-              variants={itemVariants}
-            >
-              Technologies: <span className="text-orange-500 font-bold">{exp.technologies.join(", ")}</span>.
-            </motion.span>
-          </motion.div>
+            {tech}
+          </li>
         ))}
-      </motion.div>
-    </section>
-  );
-};
+      </ul>
+      )}
+    </div>
+  </article>
+);
 
-export default Experience; 
+// Desktop placement for up to four roles: two columns that interlock like a collage
+// (DOM order stays chronological for mobile and assistive tech).
+const PLACEMENT = [
+  'lg:col-start-1 lg:row-start-1 lg:row-span-2 md:rotate-[-1.4deg]',
+  'lg:col-start-2 lg:row-start-1 md:rotate-[1.1deg]',
+  'lg:col-start-2 lg:row-start-2 lg:row-span-2 md:rotate-[-0.8deg]',
+  'lg:col-start-1 lg:row-start-3 md:rotate-[1.4deg] lg:max-w-[520px]',
+];
+
+const Experience = () => (
+  <section id="experience" aria-labelledby="experience-title" className="page-gutter section-space">
+    <h2 id="experience-title" className="section-title">
+      Experience
+    </h2>
+    <ol className="m-0 mt-12 grid list-none items-start gap-10 p-0 md:mt-14 lg:grid-cols-2 lg:gap-x-9 lg:gap-y-9">
+      {roles.map((role, i) => {
+        const isCurrent = role.endDate === 'Present';
+        return (
+          <li
+            key={`${role.company}-${role.jobTitle}-${role.startDate}`}
+            className={`relative ${i === 0 ? 'mt-4' : ''} ${PLACEMENT[i] ?? ''}`}
+          >
+            <Ticket role={role} isCurrent={isCurrent} />
+            {isCurrent && (
+              <div className="bob now-sticker" aria-hidden="true">
+                {badges.current}
+              </div>
+            )}
+            {i === roles.length - 1 && (
+              <Sparkle size={44} className="absolute -bottom-[18px] right-2 text-accent md:-right-3.5" />
+            )}
+          </li>
+        );
+      })}
+    </ol>
+  </section>
+);
+
+export default Experience;
